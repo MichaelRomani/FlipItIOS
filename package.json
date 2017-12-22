@@ -8,8 +8,10 @@
     "url": "https://github.com/apdjz"
   },
   "contributors": [
-    {"name": "Mike Romani",
-    "url": "https://github.com/mr4227"}
+    {
+      "name": "Mike Romani",
+      "url": "https://github.com/mr4227"
+    }
   ],
   "private": true,
   "devDependencies": {
@@ -37,7 +39,7 @@
     "react-native-confetti": "0.0.6",
     "react-native-sound": "^0.10.4",
     "react-native-table-component": "^1.1.2",
-    "react-navigation": "^1.0.0-beta.19",
+    "react-navigation": "^1.0.0-beta.22",
     "react-redux": "^5.0.6",
     "watchman": "^0.1.8"
   }
