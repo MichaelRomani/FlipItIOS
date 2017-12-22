@@ -1,1 +1,2 @@
-# iOS
+# Stackathon
+Grid Based Board Game
