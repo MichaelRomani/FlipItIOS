@@ -8,8 +8,10 @@
     "url": "https://github.com/apdjz"
   },
   "contributors": [
-    {"name": "Mike Romani",
-    "url": "https://github.com/mr4227"}
+    {
+      "name": "Mike Romani",
+      "url": "https://github.com/mr4227"
+    }
   ],
   "private": true,
   "devDependencies": {
