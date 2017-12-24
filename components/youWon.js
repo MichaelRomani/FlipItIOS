@@ -14,7 +14,7 @@ import { Button } from 'native-base'
 import { connect } from 'react-redux'
 import Reset from './reset'
 import Solution from './solution'
-const Dimensions = require('Dimensions')
+import Dimensions from 'Dimensions'
 let { height, width } = Dimensions.get('window')
 let tHeight = height
 let tWidth = width
