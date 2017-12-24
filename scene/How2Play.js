@@ -35,13 +35,15 @@ class Instructions extends Component {
               <View >
               <Text style={styles.text}>
               {'\n'}
-              Object of the game is to make it so that each tile of the game board is red.
+              Object of the game is to make it so that each tile of the game board is green.
               The tiles of the board can either be red or green.
               Each time you click on a tile it will flip the tile to the opposite color. In addition
-              to flipping the title to a new color it will also flip the neighboring tiles (excluding adjacent corners).
+              to flipping the tile to a new color it will also flip the neighboring tiles (excluding diagonally adjacent tiles).
               {'\n'}{'\n'}
               The number of moves and how long you take is being tracked, so do your best! Global
               ranking is to come, so start practicing.
+              {'\n'}{'\n'}
+              By the way: the tile images will change as holidays and the seasons change, so check out the new themes when they happen.
               {'\n'}
           </Text>
               </View>
