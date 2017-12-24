@@ -8,7 +8,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "primaryColor": "#6b92b9",
-    "icon": "./assets/icon/icon.png",
+    "icon": "./assets/icon/logo.png",
     "loading":{
       "icon":"./assets/icon/loading-icon.png"
     },
