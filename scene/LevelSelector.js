@@ -21,7 +21,7 @@ class Menu extends Component {
         borderWidth: 1,
         paddingLeft: 65,
         paddingRight: 63,
-        paddingTop: 3,
+        paddingTop: 5,
         borderColor: 'black',
         textAlign: 'center'
       },
@@ -37,6 +37,7 @@ class Menu extends Component {
       buttonArr.push(
         <View>
           <Button
+            large
             transparent
             light
             style={{ backgroundColor: 'rgba(0,0,0,0)' }}
@@ -52,6 +53,7 @@ class Menu extends Component {
           </Button>
           {i !== 7 ? (
             <Button
+              large
               transparent
               light
               onPress={() => {

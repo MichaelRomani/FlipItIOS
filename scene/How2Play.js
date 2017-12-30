@@ -4,28 +4,35 @@ import { Image, Text, View, StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingRight: 120
+    paddingRight: 50,
+    paddingLeft: 50
   },
   text: {
     backgroundColor: '#6b92b9',
     textAlign: 'center',
     color: 'white',
     justifyContent: 'center',
-    fontSize: 20,
+    fontSize: 22,
   },
   title: {
     paddingTop: 10,
     backgroundColor: '#6b92b9',
     textAlign: 'center',
     color: 'black',
-    fontSize: 26,
+    fontSize: 24,
     justifyContent: 'center',
+  },
+  image: {
+    flex: 1, 
+    height: undefined, 
+    width: undefined
   }
 });
 class Instructions extends Component {
   render() {
     return (
          <Image
+         style={styles.image}
           source={require('../images/backgroundSnow.png')}
         >
         <View style={styles.container}>

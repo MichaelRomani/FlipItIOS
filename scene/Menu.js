@@ -20,16 +20,17 @@ class GameMenu extends Component {
         height: tHeight
       },
       text: {
-        fontSize: 17,
+        fontSize: 23,
         fontWeight: '900',
         color: 'black',
         backgroundColor: 'rgba(0,0,0,0)',
         borderWidth: 1,
         paddingLeft: 25,
         paddingRight: 23,
-        paddingTop: 3,
+        paddingTop: 8,
         borderColor: 'black',
-        width: 170,
+        width: 200,
+        height: 40,
         textAlign: 'center'
       }
     });
@@ -41,6 +42,7 @@ class GameMenu extends Component {
         >
           <View>
             <Button
+              large
               transparent
               light
               onPress={() => this.props.navigation.navigate('GameScreen')}
@@ -48,6 +50,7 @@ class GameMenu extends Component {
               <Text style={styles.text}>Start</Text>
             </Button>
             <Button
+              large
               transparent
               light
               onPress={() => this.props.navigation.navigate('LevelSelector')}
@@ -55,6 +58,7 @@ class GameMenu extends Component {
               <Text style={styles.text}>Level Select</Text>
             </Button>
             <Button
+              large
               transparent
               light
               onPress={() => this.props.navigation.navigate('How2Play')}
@@ -62,6 +66,7 @@ class GameMenu extends Component {
               <Text style={styles.text}>How to Play</Text>
             </Button>
             <Button
+              large
               transparent
               light
               onPress={() => this.props.navigation.navigate('GameStats')}
@@ -69,6 +74,7 @@ class GameMenu extends Component {
               <Text style={styles.text}>Game Stats</Text>
             </Button>
             <Button
+              large
               transparent
               light
               onPress={() => this.props.navigation.navigate('GameSettings')}
@@ -76,6 +82,7 @@ class GameMenu extends Component {
               <Text style={styles.text}>Settings</Text>
             </Button>
             <Button
+              large
               transparent
               light
               onPress={() => this.props.navigation.navigate('About')}
@@ -83,6 +90,7 @@ class GameMenu extends Component {
               <Text style={styles.text}>About</Text>
             </Button>
             <Button
+              large
               transparent
               light
               onPress={() => this.props.navigation.navigate('Test')}

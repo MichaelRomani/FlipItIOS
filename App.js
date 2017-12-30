@@ -58,7 +58,7 @@ let styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     color: 'white',
-    fontSize: 24
+    fontSize: 37
   },
   title:{
     backgroundColor: '#6b92b9',
@@ -66,7 +66,7 @@ let styles = StyleSheet.create({
     position: 'relative',
     bottom:'16%',
     color: 'white',
-    fontSize: 30
+    fontSize: 45
   }
 })
 class HomeScreen extends Component {
