@@ -13,7 +13,6 @@ import Expo from 'expo'
 import { StackNavigator } from 'react-navigation'
 import { Provider } from 'react-redux'
 import store from './components/store/store'
-import Login from './scene/Login'
 import Menu from './scene/Menu'
 import GameScreen from './scene/GameScreen'
 import LevelSelector from './scene/LevelSelector'
@@ -37,17 +36,12 @@ let styles = StyleSheet.create({
     paddingBottom: 10,
     paddingTop: 10,
     backgroundColor: '#6b92b9'
-    // backgroundColor: 'rgba(135,135,135,0.7)'
   },
   background: {
-    // position: 'absolute',
     width: '100%',
     height: '100%',
     justifyContent: 'center',
     flex: 1
-    // resizeMode: 'cover',
-    // backgroundImage: '50';
-    // alignItems: 'center',
   },
   image:{
       justifyContent: 'center',
@@ -72,48 +66,32 @@ let styles = StyleSheet.create({
 class HomeScreen extends Component {
   constructor(props) {
     super(props)
-    this.login = this.login.bind(this)
-    this.guest = this.guest.bind(this)
+    this.play = this.play.bind(this)
   }
   static navigationOptions = {
     title: 'Home'
   }
 
-  login() {
-    this.props.navigation.navigate('Login')
-  }
-  guest() {
+  play() {
     this.props.navigation.navigate('Menu')
   }
 
   render() {
     return (
       <Provider store={store}>
-        {/* <ImageBackground
-          style={styles.image}
-          source={require('./images/snowman.jpg')}
-        > */}
           <Image
             style={styles.image}
             source={require('./images/faster5sec.gif')}
           >
-             {/* <View style={styles.container}>
-              <View style={styles.button}> */}
               <Text style={styles.title}>
                 Flip Tile
               </Text>
-                {/*<TouchableOpacity onPress={this.login}>
-                  <Text style={styles.text}>Login</Text>
-                </TouchableOpacity> 
-               </View> */}
               <View style={styles.button}>
-                <TouchableOpacity onPress={this.guest}>
+                <TouchableOpacity onPress={this.play}>
                   <Text style={styles.text}>Lets play now!</Text>
                 </TouchableOpacity>
               </View>
-            {/* </View> */}
           </Image>
-        {/* </ImageBackground> */}
       </Provider>
     )
   }
@@ -122,9 +100,6 @@ class HomeScreen extends Component {
 const ModalStack = StackNavigator({
   Home: {
     screen: HomeScreen
-  },
-  Login: {
-    screen: Login
   },
   Menu: {
     screen: Menu

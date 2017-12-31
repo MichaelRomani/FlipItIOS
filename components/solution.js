@@ -111,4 +111,3 @@ const mapDispatch = dispatch => {
 
 export default connect(mapstate, mapDispatch)(Solution);
 
-// if props i === j = flip color

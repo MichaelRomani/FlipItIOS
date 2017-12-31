@@ -6,22 +6,23 @@ import Dimensions from 'Dimensions';
 const { height, width } = Dimensions.get('window');
 const tHeight = height;
 const tWidth = width;
-
 class Menu extends Component {
+
   render() {
     let styles = StyleSheet.create({
       container: {
         justifyContent: 'center'
       },
       text: {
-        fontSize: 17,
+        fontSize: (tHeight < 800) ? 17 : (tHeight - 250) / 45,
         fontWeight: '900',
         color: 'black',
         backgroundColor: 'rgba(0,0,0,0)',
         borderWidth: 1,
         paddingLeft: 65,
         paddingRight: 63,
-        paddingTop: 5,
+        paddingTop: (tHeight < 800) ? 5 : (tHeight - 250) / 70,
+        paddingBottom: (tHeight < 800) ? 0 : (tHeight - 250) / 70,
         borderColor: 'black',
         textAlign: 'center'
       },
@@ -30,6 +31,10 @@ class Menu extends Component {
         alignItems: 'center',
         width: tWidth,
         height: tHeight
+      },
+      button: {
+        marginTop: (tHeight < 800) ? (tHeight - 205) / 174 : (tHeight - 250) / 26,
+        marginBottom: (tHeight < 800) ? - (tHeight - 205) / 134 : 0,
       }
     });
     let buttonArr = [];
@@ -37,10 +42,10 @@ class Menu extends Component {
       buttonArr.push(
         <View>
           <Button
-            large
+          large
             transparent
             light
-            style={{ backgroundColor: 'rgba(0,0,0,0)' }}
+            style={styles.button}
             onPress={() => {
               store.dispatch(setBoard({ width: i, height: i }));
               store.dispatch(setDimensions({ width: i, height: i }));
@@ -53,9 +58,9 @@ class Menu extends Component {
           </Button>
           {i !== 7 ? (
             <Button
-              large
               transparent
               light
+              style={styles.button}
               onPress={() => {
                 store.dispatch(setBoard({ width: i, height: i + 1 }));
                 store.dispatch(setDimensions({ width: i, height: i + 1 }));

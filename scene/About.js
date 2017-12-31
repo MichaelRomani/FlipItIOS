@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Image, Text, View, StyleSheet } from 'react-native';
+import Dimensions from 'Dimensions';
+const { height, width } = Dimensions.get('window');
+const tHeight = height;
+const tWidth = width;
 
 const styles = StyleSheet.create({
   container: {
@@ -12,14 +16,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     justifyContent: 'center',
-    fontSize: 25,
+    fontSize: (tHeight < 800) ? (tHeight - 200) / 26 : (tHeight - 50) / 26,
   },
   title: {
     paddingTop: 10,
     backgroundColor: '#6b92b9',
     textAlign: 'center',
     color: 'black',
-    fontSize: 30,
+    fontSize: (tHeight < 800) ? (tHeight - 100) / 20 : (tHeight - 50) / 20,
     justifyContent: 'center',
   },
   image: {
