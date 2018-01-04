@@ -20,18 +20,19 @@ const styles = StyleSheet.create({
     height: tHeight
   },
   text: {
-    fontSize: 17,
+    fontSize: (tHeight < 800) ? (tHeight - 200) / 26 : (tHeight - 50) / 38,
     fontWeight: '900',
     color: 'black',
     backgroundColor: 'rgba(0,0,0,0)',
     borderWidth: 1,
     paddingLeft: 25,
     paddingRight: 23,
-    paddingTop: 3,
+    paddingTop: (tHeight < 800) ? (tHeight - 200) / 26 : (tHeight - 50) / 26,
+    paddingBottom: (tHeight < 800) ? (tHeight - 150) / 26 : (tHeight - 50) / 26,
     borderColor: 'black',
-    width: 170,
+    width: (tHeight < 800) ? (tHeight - 200) / 26 : (tHeight) / 4,
     textAlign: 'center'
-  }
+  },
 });
 
 class GameMenu extends Component {
@@ -57,7 +58,10 @@ class GameMenu extends Component {
           source={require('../images/faster5sec.gif')}
         >
           <View>
-            <Button transparent light onPress={this.resetGameStats}>
+            <Button 
+            transparent 
+            light 
+            onPress={this.resetGameStats}>
               <Text style={styles.text}>Reset Game Stats</Text>
             </Button>
           </View>
