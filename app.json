@@ -5,7 +5,7 @@
     "slug": "flip-title",
     "privacy": "public",
     "sdkVersion": "22.0.0",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "orientation": "portrait",
     "primaryColor": "#6b92b9",
     "icon": "./assets/icon/logo.png",
@@ -14,7 +14,7 @@
     },
     "ios":{
       "supportsTablet": true,
-      "buildNumber": "3",
+      "buildNumber": "5",
       "bundleIdentifier": "com.GoodApps.FlipTile"
     }
   }

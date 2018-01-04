@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     height: tHeight
   },
   text: {
-    fontSize: (tHeight < 800) ? (tHeight - 200) / 26 : (tHeight - 50) / 38,
+    fontSize: (tHeight < 800) ? (tHeight - 200) / 16 : (tHeight - 50) / 38,
     fontWeight: '900',
     color: 'black',
     backgroundColor: 'rgba(0,0,0,0)',
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     paddingTop: (tHeight < 800) ? (tHeight - 200) / 26 : (tHeight - 50) / 26,
     paddingBottom: (tHeight < 800) ? (tHeight - 150) / 26 : (tHeight - 50) / 26,
     borderColor: 'black',
-    width: (tHeight < 800) ? (tHeight - 200) / 26 : (tHeight) / 4,
+    width: (tHeight < 800) ? (tHeight - 200) / 2 : (tHeight) / 4,
     textAlign: 'center'
   },
 });
