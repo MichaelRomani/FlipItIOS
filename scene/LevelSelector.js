@@ -14,15 +14,15 @@ class Menu extends Component {
         justifyContent: 'center'
       },
       text: {
-        fontSize: (tHeight < 800) ? 17 : (tHeight - 250) / 45,
+        fontSize: (tHeight < 900) ? 22 : (tHeight - 250) / 45,
         fontWeight: '900',
         color: 'black',
         backgroundColor: 'rgba(0,0,0,0)',
         borderWidth: 1,
         paddingLeft: 65,
         paddingRight: 63,
-        paddingTop: (tHeight < 800) ? 5 : (tHeight - 250) / 70,
-        paddingBottom: (tHeight < 800) ? 0 : (tHeight - 250) / 70,
+        paddingTop: (tHeight < 900) ? 8 : (tHeight - 250) / 70,
+        paddingBottom: (tHeight < 900) ? 8 : (tHeight - 250) / 70,
         borderColor: 'black',
         textAlign: 'center'
       },
@@ -33,8 +33,8 @@ class Menu extends Component {
         height: tHeight
       },
       button: {
-        marginTop: (tHeight < 800) ? (tHeight - 205) / 174 : (tHeight - 250) / 26,
-        marginBottom: (tHeight < 800) ? - (tHeight - 205) / 134 : 0,
+        marginTop: (tHeight < 900) ? (tHeight - 205) / 169 : (tHeight - 250) / 26,
+        marginBottom: (tHeight < 900) ? - (tHeight - 205) / 135 : 0,
       }
     });
     let buttonArr = [];

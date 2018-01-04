@@ -20,7 +20,7 @@ class GameMenu extends Component {
         height: tHeight
       },
       text: {
-        fontSize: 23,
+        fontSize: (tHeight < 900) ? 23 : (tHeight - 250) / 45,
         fontWeight: '900',
         color: 'black',
         backgroundColor: 'rgba(0,0,0,0)',
