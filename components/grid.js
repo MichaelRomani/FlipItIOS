@@ -45,15 +45,8 @@ class Grid extends Component {
     }
     const rowWidth = width * gamePieceSize + width * 2;
     const styles = StyleSheet.create({
-      TopBuffer: { height: 300, backgroundColor: 'white', borderWidth: 0 },
       text: { marginLeft: 5 },
       row: { height: gamePieceSize, width: rowWidth },
-      top: { height: 180, width: 300 },
-      app: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white'
-      },
       backgroundGif: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -65,7 +58,6 @@ class Grid extends Component {
         fontSize: 40,
         fontWeight: 'bold',
         textAlign: 'center',
-        backgroundColor: 'rgba(0,0,0,0)',
         marginBottom: 20
       }
     });
@@ -75,7 +67,7 @@ class Grid extends Component {
       }, 1000);
     }
     return (
-      <View style={{ backgroundColor: 'white' }}>
+      <View>
         {this.state.win ? (
           <View>
             <YouWon />
@@ -84,7 +76,7 @@ class Grid extends Component {
         ) : (
           <Image
             style={styles.backgroundGif}
-            source={require('../images/faster5sec.gif')}
+            source={require('../images/pastel.jpg')}
           >
             <Text style={styles.text2} key="moveCount">
               Moves: {this.props.count.count}
@@ -93,7 +85,6 @@ class Grid extends Component {
               <Rows
                 data={tableData}
                 style={styles.row}
-                textStyle={styles.text}
               />
             </Table>
             <Text style={{ fontSize: 5 }}>{'\n'}</Text>

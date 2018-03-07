@@ -117,7 +117,7 @@ class youWon extends Component {
             width: tWidth,
             height: tHeight
           }}
-          source={require('../images/youwon.gif')}
+          source={require('../images/pastel.jpg')}
         >
           <Text
             style={{
@@ -138,7 +138,7 @@ class youWon extends Component {
               margin: 100,
               transform: [{ rotate: spin }]
             }}
-            source={require('../images/present.png')}
+            source={require('../images/pastel.jpg')}
             onPress={this.seeStats()}
           />
         </Image>

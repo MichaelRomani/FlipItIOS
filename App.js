@@ -81,7 +81,7 @@ class HomeScreen extends Component {
       <Provider store={store}>
           <Image
             style={styles.image}
-            source={require('./images/faster5sec.gif')}
+            source={require('./images/pastel.jpg')}
           >
               <Text style={styles.title}>
                 Flip Tile

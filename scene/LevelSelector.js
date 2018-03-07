@@ -56,24 +56,6 @@ class Menu extends Component {
               {i}X{i}
             </Text>
           </Button>
-          {i !== 7 ? (
-            <Button
-              transparent
-              light
-              style={styles.button}
-              onPress={() => {
-                store.dispatch(setBoard({ width: i, height: i + 1 }));
-                store.dispatch(setDimensions({ width: i, height: i + 1 }));
-                this.props.navigation.navigate('GameScreen');
-              }}
-            >
-              <Text style={styles.text}>
-                {i}X{i + 1}
-              </Text>
-            </Button>
-          ) : (
-            <View />
-          )}
         </View>
       );
     }
@@ -81,7 +63,7 @@ class Menu extends Component {
       <View style={styles.container}>
         <Image
           style={styles.image}
-          source={require('../images/faster5sec.gif')}
+          source={require('../images/pastel.jpg')}
         >
           {buttonArr.map(button => button)}
           <Text>{'\n'}</Text>

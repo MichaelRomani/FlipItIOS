@@ -37,7 +37,7 @@ class Instructions extends Component {
     return (
          <Image
          style={styles.image}
-          source={require('../images/backgroundSnow.png')}
+          source={require('../images/pastel.jpg')}
         >
         <View style={styles.container}>
               <Text style={styles.title}>

@@ -49,23 +49,27 @@ class Buttons extends Component {
   render() {
     const displayBool = !!this.props.bool[this.props.iNum];
     const styles = StyleSheet.create({
-      imageStyle: {
-        width: this.props.size,
-        height: this.props.size
+      imageStyleOff: {
+        width: this.props.size - 3,
+        height: this.props.size - 5,
+        backgroundColor: 'white'
+      },
+      imageStyleOn: {
+        width: this.props.size - 3,
+        height: this.props.size - 5,
+        backgroundColor: 'rgba(0,0,0,0.08)'
       }
     });
     return (
       <View>
         <TouchableHighlight onPress={this.toggleColor}>
           {displayBool ? (
-            <Image
-              style={styles.imageStyle}
-              source={require('../images/santahat2.png')}
+            <View
+              style={styles.imageStyleOff}
             />
           ) : (
-            <Image
-              style={styles.imageStyle}
-              source={require('../images/present.png')}
+            <View
+              style={styles.imageStyleOn}
             />
           )}
         </TouchableHighlight>

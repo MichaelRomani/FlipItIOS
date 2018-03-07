@@ -38,7 +38,7 @@ class GameMenu extends Component {
       <View>
         <Image
           style={styles.image}
-          source={require('../images/faster5sec.gif')}
+          source={require('../images/pastel.jpg')}
         >
           <View>
             <Button
