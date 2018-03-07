@@ -43,22 +43,27 @@ let styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1
   },
-  image:{
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: tWidth,
-      height: tHeight
+  image: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: tWidth,
+    height: tHeight
+  },
+  flipLogo: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 160
   },
   text: {
     textAlign: 'center',
     color: 'white',
     fontSize: 37
   },
-  title:{
+  title: {
     backgroundColor: '#6b92b9',
     textAlign: 'center',
     position: 'relative',
-    bottom:'16%',
+    bottom: '16%',
     color: 'white',
     fontSize: 45
   }
@@ -66,6 +71,9 @@ let styles = StyleSheet.create({
 class HomeScreen extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      color: 0
+    }
     this.play = this.play.bind(this)
   }
   static navigationOptions = {
@@ -79,19 +87,17 @@ class HomeScreen extends Component {
   render() {
     return (
       <Provider store={store}>
-          <Image
-            style={styles.image}
-            source={require('./images/pastel.jpg')}
-          >
-              <Text style={styles.title}>
-                Flip Tile
-              </Text>
-              <View style={styles.button}>
-                <TouchableOpacity onPress={this.play}>
-                  <Text style={styles.text}>Lets play now!</Text>
-                </TouchableOpacity>
-              </View>
-          </Image>
+        <Image
+          style={styles.image}
+          source={require('./images/pastel.jpg')}
+        >
+          <TouchableOpacity onPress={this.play}>
+            <Image
+              style={styles.flipLogo}
+              source={require('./images/FLIPTILEcopy.png')}
+            />
+          </TouchableOpacity>
+        </Image>
       </Provider>
     )
   }
