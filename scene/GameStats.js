@@ -21,6 +21,7 @@ export default class GameStats extends Component {
     this.state = {
       displayStats: false
     }
+    this.resetGameStats = this.resetGameStats.bind(this);
     this.limitPush = 0
     this.statArray = [
       <Row key={'array'} style={styles.row}>
@@ -65,23 +66,6 @@ export default class GameStats extends Component {
                   <Text style={styles.textCenter}>{timeStat || 'N/A'}</Text>
                 </Col>
               </Row>
-              {i !== 7 ? (
-                <Row style={styles.mainRows}>
-                  <Col style={styles.colStyle}>
-                    <Text style={styles.textCenter}>
-                      {i}X{i + 1}
-                    </Text>
-                  </Col>
-                  <Col style={styles.colStyle}>
-                    <Text style={styles.textCenter}>{move_2Stat || 'N/A'}</Text>
-                  </Col>
-                  <Col style={styles.colStyle}>
-                    <Text style={styles.textCenter}>{time_2Stat || 'N/A'}</Text>
-                  </Col>
-                </Row>
-              ) : (
-                <View />
-              )}
             </View>
           )
         }
@@ -93,19 +77,34 @@ export default class GameStats extends Component {
     }
   }
 
+  resetGameStats = async () => {
+    for (let i = 2; i < 8; i++) {
+      await AsyncStorage.setItem(`${i}${i}`, 'N/A');
+      await AsyncStorage.setItem(`${i}${i + 1}`, 'N/A');
+      await AsyncStorage.setItem(`${i}${i}Time`, 'N/A');
+      await AsyncStorage.setItem(`${i}${i + 1}Time`, 'N/A');
+      this.render()
+    }
+  }
+
   render() {
     return (
       <Container style={styles.container}>
         <Image
           style={styles.mainImage}
           source={require('../images/pastel.jpg')}
+          blurRadius={9}
         >
           <Content>
-            {this.state.displayStats ? (
+            {this.state.displayStats &&
               <Grid>{this.statArray.map(ele => ele)}</Grid>
-            ) : (
-              <View />
-            )}
+            }
+            <Button
+              transparent
+              light
+              onPress={this.resetGameStats}>
+              <Text style={styles.buttonText}>Reset Game Stats</Text>
+            </Button>
           </Content>
         </Image>
       </Container>
@@ -120,7 +119,7 @@ let styles = StyleSheet.create({
   },
   row: {
     marginTop: 80,
-    backgroundColor: '#95dbf4',
+    backgroundColor: 'rgba(0,0,0,0)',
     borderWidth: 2,
     height: 50,
     marginLeft: 35,
@@ -135,16 +134,30 @@ let styles = StyleSheet.create({
   },
   mainRows: {
     marginTop: 8,
-    backgroundColor: 'white',
+    backgroundColor: 'rgba(0,0,0,0)',
     borderWidth: 2,
+    borderColor: 'white',
     height: 30,
     marginLeft: 35,
     marginRight: 35
   },
-  colStyle: { borderWidth: 1 },
-  textCenter: { textAlign: 'center' },
+  colStyle: { borderWidth: 1, borderColor: 'white', },
+  textCenter: { textAlign: 'center', color: 'white' },
   mainImage: {
     width: tWidth,
     height: tHeight
+  },
+  buttonText: {
+    fontSize: 24,
+    fontWeight: '900',
+    color: 'white',
+    backgroundColor: 'rgba(0,0,0,0)',
+    paddingLeft: 25,
+    paddingRight: 23,
+    paddingTop: (tHeight < 800) ? (tHeight - 200) / 26 : (tHeight - 50) / 26,
+    paddingBottom: (tHeight < 800) ? (tHeight - 150) / 26 : (tHeight - 50) / 26,
+    borderColor: 'black',
+    width: (tHeight < 800) ? (tHeight - 200) / 2 : (tHeight) / 4,
+    textAlign: 'center'
   }
 })

@@ -11,13 +11,12 @@ export function completionTime(time) {
 
 //Reducer
 export default function reducer(state = initialState, action) {
-  let newState = state;
   switch (action.type) {
     case COMPLETED_TIME:
-      newState = action.time;
-      return newState;
+      state = action.time;
+      return state;
 
     default:
-      return newState;
+      return state;
   }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {
+  Animated,
   AppRegistry,
   TouchableOpacity,
   Text,
@@ -17,7 +18,6 @@ import Menu from './scene/Menu'
 import GameScreen from './scene/GameScreen'
 import LevelSelector from './scene/LevelSelector'
 import How2Play from './scene/How2Play'
-import GameSettings from './scene/GameSettings'
 import About from './scene/About'
 import GameStats from './scene/GameStats'
 const Dimensions = require('Dimensions')
@@ -72,12 +72,24 @@ class HomeScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      color: 0
+      color: 0,
+      fadeAnim: new Animated.Value(0),  // Initial value for opacity: 0,
     }
     this.play = this.play.bind(this)
   }
+
   static navigationOptions = {
     title: 'Home'
+  }
+
+  componentDidMount() {
+    Animated.timing(                  // Animate over time
+      this.state.fadeAnim,            // The animated value to drive
+      {
+        toValue: 1,                   // Animate to opacity: 1 (opaque)
+        duration: 900,              // Make it take a while
+      }
+    ).start();                        // Starts the animation
   }
 
   play() {
@@ -85,19 +97,22 @@ class HomeScreen extends Component {
   }
 
   render() {
+    let { fadeAnim } = this.state;
     return (
       <Provider store={store}>
-        <Image
-          style={styles.image}
-          source={require('./images/pastel.jpg')}
-        >
-          <TouchableOpacity onPress={this.play}>
-            <Image
-              style={styles.flipLogo}
-              source={require('./images/FLIPTILEcopy.png')}
-            />
-          </TouchableOpacity>
-        </Image>
+        <Animated.View style={{ opacity: fadeAnim }}>
+          <Image
+            style={styles.image}
+            source={require('./images/pastel.jpg')}
+          >
+            <TouchableOpacity onPress={this.play}>
+              <Image
+                style={styles.flipLogo}
+                source={require('./images/FLIPTILEcopy.png')}
+              />
+            </TouchableOpacity>
+          </Image>
+        </Animated.View>
       </Provider>
     )
   }
@@ -121,9 +136,6 @@ const ModalStack = StackNavigator({
   },
   GameStats: {
     screen: GameStats
-  },
-  GameSettings: {
-    screen: GameSettings
   },
   About: {
     screen: About

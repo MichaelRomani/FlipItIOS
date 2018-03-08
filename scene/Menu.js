@@ -77,14 +77,6 @@ class GameMenu extends Component {
               large
               transparent
               light
-              onPress={() => this.props.navigation.navigate('GameSettings')}
-            >
-              <Text style={styles.text}>Settings</Text>
-            </Button>
-            <Button
-              large
-              transparent
-              light
               onPress={() => this.props.navigation.navigate('About')}
             >
               <Text style={styles.text}>About</Text>

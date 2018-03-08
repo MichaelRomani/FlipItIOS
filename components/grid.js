@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, View, StyleSheet, Text } from 'react-native';
+import { Image, View, StyleSheet, Text, Animated } from 'react-native';
 import { Table, Rows } from 'react-native-table-component';
 import Buttons from './buttons';
 import { connect } from 'react-redux';
@@ -16,13 +16,27 @@ class Grid extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      win: false
+      win: false,
+      fadeAnim: new Animated.Value(1),  // Initial value for opacity: 0,
     };
     this.num = 0;
   }
 
   componentWillMount() {
     this.props.setCount({ count: 0 });
+  }
+
+  componentDidUpdate() {
+    console.log(this.state.win)
+    if (this.props && this.props.bool.indexOf(true) === -1) {
+      Animated.timing(                  // Animate over time
+        this.state.fadeAnim,            // The animated value to drive
+        {
+          toValue: 0,                   // Animate to opacity: 1 (opaque)
+          duration: 700,              // Make it take a while
+        }
+      ).start();                        // Starts the animation
+    }
   }
 
   componentWillUnmount() {
@@ -64,35 +78,42 @@ class Grid extends Component {
     if (this.props && this.props.bool.indexOf(true) === -1) {
       setTimeout(() => {
         this.setState({ win: true });
-      }, 1000);
+      }, 4000);
     }
+    let { fadeAnim } = this.state;
     return (
       <View>
         {this.state.win ? (
-          <View>
-            <YouWon />
-            <Reset />
-          </View>
-        ) : (
           <Image
-            style={styles.backgroundGif}
-            source={require('../images/pastel.jpg')}
-          >
-            <Text style={styles.text2} key="moveCount">
-              Moves: {this.props.count.count}
-            </Text>
-            <Table borderStyle={{ borderWidth: 0, borderColor: 'white' }}>
-              <Rows
-                data={tableData}
-                style={styles.row}
-              />
-            </Table>
-            <Text style={{ fontSize: 5 }}>{'\n'}</Text>
-
-            <Timer />
+              style={styles.backgroundGif}
+              source={require('../images/pastel.jpg')}
+            >
             <Reset />
-          </Image>
-        )}
+            </Image>
+        ) : (
+            <Image
+              style={styles.backgroundGif}
+              source={require('../images/pastel.jpg')}
+            >
+              <Animated.View style={{ opacity: fadeAnim, justifyContent: 'center',
+        alignItems: 'center' }}>
+                <Text style={styles.text2} key="moveCount">
+                  Moves: {this.props.count.count}
+                </Text>
+                <Table borderStyle={{ borderWidth: 0, borderColor: 'white' }}>
+                  <Rows
+                    data={tableData}
+                    style={styles.row}
+                  />
+                </Table>
+
+                <Text style={{ fontSize: 5 }}>{'\n'}</Text>
+
+                <Timer />
+                <Reset />
+              </Animated.View>
+            </Image>
+          )}
       </View>
     );
   }
