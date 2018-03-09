@@ -28,7 +28,7 @@ class GameMenu extends Component {
         paddingLeft: 25,
         paddingRight: 23,
         paddingTop: 8,
-        borderColor: 'black',
+        borderColor: 'white',
         width: 200,
         height: 40,
         textAlign: 'center'

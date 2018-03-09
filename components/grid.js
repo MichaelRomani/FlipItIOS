@@ -22,21 +22,8 @@ class Grid extends Component {
     this.num = 0;
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.setCount({ count: 0 });
-  }
-
-  componentDidUpdate() {
-    console.log(this.state.win)
-    if (this.props && this.props.bool.indexOf(true) === -1) {
-      Animated.timing(                  // Animate over time
-        this.state.fadeAnim,            // The animated value to drive
-        {
-          toValue: 0,                   // Animate to opacity: 1 (opaque)
-          duration: 700,              // Make it take a while
-        }
-      ).start();                        // Starts the animation
-    }
   }
 
   componentWillUnmount() {
@@ -79,6 +66,15 @@ class Grid extends Component {
       setTimeout(() => {
         this.setState({ win: true });
       }, 4000);
+    }
+    if (this.props && this.props.bool.indexOf(true) === -1) {
+      Animated.timing(                  // Animate over time
+        this.state.fadeAnim,            // The animated value to drive
+        {
+          toValue: 0,                   // Animate to opacity: 1 (opaque)
+          duration: 700,              // Make it take a while
+        }
+      ).start();                        // Starts the animation
     }
     let { fadeAnim } = this.state;
     return (

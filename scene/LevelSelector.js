@@ -23,7 +23,7 @@ class Menu extends Component {
         paddingRight: 63,
         paddingTop: (tHeight < 900) ? 8 : (tHeight - 250) / 70,
         paddingBottom: (tHeight < 900) ? 8 : (tHeight - 250) / 70,
-        borderColor: 'black',
+        borderColor: 'white',
         textAlign: 'center'
       },
       image: {

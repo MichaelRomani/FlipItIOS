@@ -52,12 +52,12 @@ class Buttons extends Component {
       imageStyleOff: {
         width: this.props.size - 3,
         height: this.props.size - 5,
-        backgroundColor: 'white'
+        backgroundColor: 'rgba(14,0,0,0.21)'
       },
       imageStyleOn: {
         width: this.props.size - 3,
         height: this.props.size - 5,
-        backgroundColor: 'rgba(0,0,0,0.08)'
+        backgroundColor: 'rgba(0,0,0,0.11)'
       }
     });
     return (
