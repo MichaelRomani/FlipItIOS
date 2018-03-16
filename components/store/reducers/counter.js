@@ -1,4 +1,4 @@
-let initialState = { count: 0 };
+const initialState = { count: 0 };
 
 //Actions
 const COUNTER = 'COUNTER';
@@ -14,6 +14,7 @@ export default function reducer(state = initialState, action) {
   let newState = Object.assign({}, state);
 
   switch (action.type) {
+
     case COUNTER:
       newState = action.num;
       return newState;

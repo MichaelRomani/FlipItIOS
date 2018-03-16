@@ -1,33 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, Text } from 'react-native';
 import { Button } from 'native-base';
 import { connect } from 'react-redux';
 import { reset, setBoard, setCount, setTime } from './store/store';
 
-class Reset extends Component {
-  constructor(props) {
-    super(props);
-    this.saveData = this.saveData.bind(this);
-  }
+const Reset = (props) => {
 
-  saveData() {
-    let moves = this.props && this.props.count.count;
-  }
-
-  render() {
     return (
       <View>
         <Button
           transparent
           light
           onPress={() => {
-            this.props.setTime(Date.now());
-            this.props.setBoard({
-              width: this.props.dimensions.width,
-              height: this.props.dimensions.height
+            props.setTime(Date.now());
+            props.setBoard({
+              width: props.dimensions.width,
+              height: props.dimensions.height
             });
-            this.props.setCount({ count: 0 });
-            this.saveData();
+            props.setCount({ count: 0 });
           }}
         >
           <Text
@@ -45,7 +35,6 @@ class Reset extends Component {
         </Button>
       </View>
     );
-  }
 }
 
 const mapState = state => {

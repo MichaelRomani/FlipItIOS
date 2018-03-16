@@ -1,14 +1,14 @@
 import { combineReducers, createStore } from 'redux';
-import gridStore from './reducers/gridStore';
-import setBoard from './reducers/setBoard';
-import counter from './reducers/counter';
+import bool from './reducers/gridStore';
+import dimensions from './reducers/setBoard';
+import count from './reducers/counter';
 import nowTime from './reducers/nowTime';
 import completedTime from './reducers/completedTime';
 
 const reducer = combineReducers({
-  bool: gridStore,
-  dimensions: setBoard,
-  count: counter,
+  bool,
+  dimensions,
+  count,
   nowTime,
   completedTime
 });

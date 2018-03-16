@@ -33,11 +33,11 @@ class Timer extends Component {
   render() {
     let elapsed = Math.round(this.state.seconds / 100);
     let seconds = (elapsed / 10).toFixed(1);
-    dispSeconds =
+    const dispSeconds =
       Math.floor(seconds % 60) < 10
         ? '0'.concat(Math.floor(seconds) % 60)
         : Math.floor(seconds) % 60;
-    dispMinutes =
+    const dispMinutes =
       Math.floor(seconds / 60).length > 1
         ? Math.floor(seconds / 60)
         : '0'.concat(Math.floor(seconds / 60));

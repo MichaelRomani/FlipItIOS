@@ -14,6 +14,7 @@ export default function reducer(state = initialState, action) {
   let newState = Object.assign({}, state);
 
   switch (action.type) {
+
     case WIDTH_HEIGHT:
       newState = action.board;
       return newState;

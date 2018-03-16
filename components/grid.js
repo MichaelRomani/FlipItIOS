@@ -17,7 +17,7 @@ class Grid extends Component {
     super(props);
     this.state = {
       win: false,
-      fadeAnim: new Animated.Value(1),  // Initial value for opacity: 0,
+      fadeAnim: new Animated.Value(1)
     };
     this.num = 0;
   }
@@ -31,8 +31,8 @@ class Grid extends Component {
   }
 
   render() {
-    let width = this.props.dimensions && this.props.dimensions.width;
-    let height = this.props.dimensions && this.props.dimensions.height;
+    width = this.props.dimensions && this.props.dimensions.width;
+    height = this.props.dimensions && this.props.dimensions.height;
     const gamePieceSize = tWidth * 0.81 / width;
     const num = width * height;
     let rowButtons = [];
@@ -65,7 +65,7 @@ class Grid extends Component {
     if (this.props && this.props.bool.indexOf(true) === -1) {
       setTimeout(() => {
         this.setState({ win: true });
-      }, 4000);
+      }, 3000);
     }
     if (this.props && this.props.bool.indexOf(true) === -1) {
       Animated.timing(                  // Animate over time
@@ -82,21 +82,27 @@ class Grid extends Component {
         {this.state.win ? (
           <Image
               style={styles.backgroundGif}
-              source={require('../images/pastel.jpg')}
+              source={require('../images/3201.jpg')}
             >
             <Reset />
             </Image>
         ) : (
             <Image
               style={styles.backgroundGif}
-              source={require('../images/pastel.jpg')}
+              source={require('../images/3201.jpg')}
             >
-              <Animated.View style={{ opacity: fadeAnim, justifyContent: 'center',
-        alignItems: 'center' }}>
+              <Animated.View style={{
+                opacity: fadeAnim,
+                justifyContent: 'center',
+                alignItems: 'center'
+                }}>
                 <Text style={styles.text2} key="moveCount">
                   Moves: {this.props.count.count}
                 </Text>
-                <Table borderStyle={{ borderWidth: 0, borderColor: 'white' }}>
+                <Table borderStyle={{
+                  borderWidth: 0,
+                  borderColor: 'white'
+                  }}>
                   <Rows
                     data={tableData}
                     style={styles.row}

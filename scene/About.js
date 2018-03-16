@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
     width: undefined
   }
 });
-class About extends Component {
-  render() {
+const About = () => {
+
     return (
          <Image
          style={styles.image}
@@ -52,7 +52,6 @@ class About extends Component {
               </View>
         </Image>
     );
-  }
 }
 
 export default About;

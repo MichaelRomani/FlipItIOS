@@ -25,8 +25,7 @@ const styles = StyleSheet.create({
   renderB: {}
 });
 
-export default class GameScreen extends Component {
-  render() {
+const GameScreen = () => {
     return (
       <Provider store={store}>
         <Container>
@@ -38,5 +37,6 @@ export default class GameScreen extends Component {
         </Container>
       </Provider>
     );
-  }
 }
+
+export default GameScreen;

@@ -12,7 +12,9 @@ export function setTime(time) {
 //Reducer
 export default function reducer(state = initialState, action) {
   let newState = state;
+
   switch (action.type) {
+
     case NOW_TIME:
       newState = action.time;
       return newState;

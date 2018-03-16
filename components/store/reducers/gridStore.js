@@ -8,7 +8,7 @@ for (let i = 0; i < totalSquares; i++) {
   boolArray.push(true);
 }
 
-let initialState = boolArray;
+const initialState = boolArray;
 
 //Actions
 const NEW_ARRAY = 'NEW_ARRAY';
@@ -22,12 +22,12 @@ export function newArray(array) {
 }
 
 export function setBoard(board) {
-  let newBoolArray = [];
-  let newTotalSquares = board.width * board.height;
+  const newBoolArray = [];
+  const newTotalSquares = board.width * board.height;
   for (let i = 0; i < newTotalSquares; i++) {
     newBoolArray.push(true);
   }
-  let newBoard = newBoolArray;
+  const newBoard = newBoolArray;
   const action = { type: SET_BOARD, newBoard };
   return action;
 }
@@ -42,6 +42,7 @@ export default function reducer(state = initialState, action) {
   let newState = Object.assign([], state);
 
   switch (action.type) {
+
     case NEW_ARRAY:
       newState = action.array;
       return newState;

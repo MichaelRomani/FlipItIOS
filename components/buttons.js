@@ -11,18 +11,13 @@ class Buttons extends Component {
 
   toggleColor() {
     let countNum = this.props && this.props.count.count;
-    //sets move count in store
     this.props.setCount({ count: countNum + 1 });
-    //sets width and height to values set in store, sets totalSquares to these numbers multiplied
     this.width = this.props.dimensions && this.props.dimensions.width;
     this.height = this.props.dimensions && this.props.dimensions.height;
     const totalSquares = this.width * this.height;
-    //sets iNum to index number of button (passed in from grid)
     const iNum = this.props.iNum;
-    //creates temp array to edit
     let tempArr = this.props.bool.slice();
     tempArr.splice(iNum, 1, !this.props.bool[iNum]);
-    //if statements that make changes to state, changing image on grid
     if (iNum - 1 >= 0 && iNum % this.width !== 0) {
       let oneBeforeNum = iNum - 1;
       tempArr.splice(oneBeforeNum, 1, !this.props.bool[oneBeforeNum]);
