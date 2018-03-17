@@ -65,7 +65,7 @@ class Grid extends Component {
     if (this.props && this.props.bool.indexOf(true) === -1) {
       setTimeout(() => {
         this.setState({ win: true });
-      }, 3000);
+      }, 1500);
     }
     if (this.props && this.props.bool.indexOf(true) === -1) {
       Animated.timing(                  // Animate over time
@@ -84,7 +84,8 @@ class Grid extends Component {
               style={styles.backgroundGif}
               source={require('../images/3201.jpg')}
             >
-            <Reset />
+            <Text style={styles.text2}>Total Moves: {this.props.count.count}</Text>
+            <Text style={styles.text2}>Total Time: {this.props.completedTime}</Text>
             </Image>
         ) : (
             <Image
@@ -108,9 +109,7 @@ class Grid extends Component {
                     style={styles.row}
                   />
                 </Table>
-
                 <Text style={{ fontSize: 5 }}>{'\n'}</Text>
-
                 <Timer />
                 <Reset />
               </Animated.View>
@@ -126,7 +125,8 @@ const mapState = state => {
     bool: state.bool,
     dimensions: state.dimensions,
     count: state.count,
-    won: state.won
+    won: state.won,
+    completedTime: state.completedTime
   };
 };
 

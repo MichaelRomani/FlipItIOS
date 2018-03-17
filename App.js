@@ -87,7 +87,7 @@ class HomeScreen extends Component {
       this.state.fadeAnim,            // The animated value to drive
       {
         toValue: 1,                   // Animate to opacity: 1 (opaque)
-        duration: 900,              // Make it take a while
+        duration: 1500,              // Make it take a while
       }
     ).start();                        // Starts the animation
   }
@@ -103,7 +103,7 @@ class HomeScreen extends Component {
         <Animated.View style={{ opacity: fadeAnim }}>
           <Image
             style={styles.image}
-            source={require('./images/pastel.jpg')}
+            source={require('./images/2590-Dark.jpg')}
           >
             <TouchableOpacity onPress={this.play}>
               <Image

@@ -37,7 +37,7 @@ const About = () => {
     return (
          <Image
          style={styles.image}
-          source={require('../images/pastel.jpg')}
+          source={require('../images/2590-Dark.jpg')}
         >
         <View style={styles.container}>
               <Text style={styles.title}>

@@ -63,7 +63,7 @@ class Menu extends Component {
       <View style={styles.container}>
         <Image
           style={styles.image}
-          source={require('../images/pastel.jpg')}
+          source={require('../images/2590-Dark.jpg')}
         >
           {buttonArr.map(button => button)}
           <Text>{'\n'}</Text>

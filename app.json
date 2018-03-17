@@ -8,9 +8,9 @@
     "version": "1.1.1",
     "orientation": "portrait",
     "primaryColor": "#6b92b9",
-    "icon": "./assets/icon/logo.png",
+    "icon": "./images/FLIPTILEcopy.png",
     "loading":{
-      "icon":"./assets/icon/loading-icon.png"
+      "backgroundImage": "./assets/icon/loading-icon.png"
     },
     "ios":{
       "supportsTablet": true,

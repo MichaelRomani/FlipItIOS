@@ -92,7 +92,7 @@ export default class GameStats extends Component {
       <Container style={styles.container}>
         <Image
           style={styles.mainImage}
-          source={require('../images/pastel.jpg')}
+          source={require('../images/2590-Dark.jpg')}
           blurRadius={9}
         >
           <Content>
