@@ -10,10 +10,11 @@ class Buttons extends Component {
   }
 
   toggleColor() {
-    let countNum = this.props && this.props.count.count;
-    this.props.setCount({ count: countNum + 1 });
-    this.width = this.props.dimensions && this.props.dimensions.width;
-    this.height = this.props.dimensions && this.props.dimensions.height;
+    let countNum = this.props.count;
+    console.log(countNum, 'countNum')
+    this.props.setCount(countNum + 1);
+    this.width = this.props.dimensions.width;
+    this.height = this.props.dimensions.height;
     const totalSquares = this.width * this.height;
     const iNum = this.props.iNum;
     let tempArr = this.props.bool.slice();
@@ -63,10 +64,10 @@ class Buttons extends Component {
               style={styles.imageStyleOff}
             />
           ) : (
-            <View
-              style={styles.imageStyleOn}
-            />
-          )}
+              <View
+                style={styles.imageStyleOn}
+              />
+            )}
         </TouchableHighlight>
       </View>
     );

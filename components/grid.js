@@ -5,7 +5,6 @@ import Buttons from './buttons';
 import { connect } from 'react-redux';
 import Reset from './reset';
 import Timer from './timer2';
-import YouWon from './youWon';
 import { setCount, reset } from './store/store';
 import Dimensions from 'Dimensions';
 let { height, width } = Dimensions.get('window');
@@ -23,7 +22,7 @@ class Grid extends Component {
   }
 
   componentDidMount() {
-    this.props.setCount({ count: 0 });
+    this.props.setCount(0);
   }
 
   componentWillUnmount() {
@@ -88,13 +87,13 @@ class Grid extends Component {
       <View>
         {this.state.win ? (
           <Image
-              style={styles.backgroundGif}
-              source={require('../images/3201.jpg')}
-            >
+            style={styles.backgroundGif}
+            source={require('../images/3201.jpg')}
+          >
             <Text style={styles.text2}>Level Complete{'\n'}</Text>
-            <Text style={styles.text2}>Total Moves: {this.props.count.count}{'\n'}</Text>
+            <Text style={styles.text2}>Total Moves: {this.props.count}{'\n'}</Text>
             <Text style={styles.text2}>Total Time: {this.props.completedTime}</Text>
-            </Image>
+          </Image>
         ) : (
             <Image
               style={styles.backgroundGif}
@@ -104,14 +103,14 @@ class Grid extends Component {
                 opacity: fadeAnim,
                 justifyContent: 'center',
                 alignItems: 'center'
-                }}>
+              }}>
                 <Text style={styles.text2} key="moveCount">
-                  Moves: {this.props.count.count}
+                  Moves: {this.props.count}
                 </Text>
                 <Table borderStyle={{
                   borderWidth: 0,
                   borderColor: 'white'
-                  }}>
+                }}>
                   <Rows
                     data={tableData}
                     style={styles.row}
