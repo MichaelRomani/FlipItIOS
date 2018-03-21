@@ -117,20 +117,8 @@ class youWon extends Component {
             width: tWidth,
             height: tHeight
           }}
-          source={require('../images/2590-Dark.jpg')}
+          source={require('../assets/Main-Background.png')}
         >
-          <Text
-            style={{
-              fontSize: 45,
-              fontWeight: 'bold',
-              textAlign: 'center',
-              marginBottom: 4,
-              backgroundColor: 'rgba(0,0,0,0)',
-              color: 'green'
-            }}
-          >
-            You Won!
-          </Text>
           <Animated.Image
             style={{
               width: 227,
@@ -138,7 +126,7 @@ class youWon extends Component {
               margin: 100,
               transform: [{ rotate: spin }]
             }}
-            source={require('../images/2590-Dark.jpg')}
+            source={require('../assets/Main-Background.png')}
             onPress={this.seeStats()}
           />
         </Image>

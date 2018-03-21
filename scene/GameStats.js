@@ -19,6 +19,7 @@ export default class GameStats extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      rerender: 0,
       displayStats: false
     }
     this.resetGameStats = this.resetGameStats.bind(this);
@@ -83,31 +84,34 @@ export default class GameStats extends Component {
       await AsyncStorage.setItem(`${i}${i + 1}`, 'N/A');
       await AsyncStorage.setItem(`${i}${i}Time`, 'N/A');
       await AsyncStorage.setItem(`${i}${i + 1}Time`, 'N/A');
-      this.render()
+      this.setState({ rerender: this.state.rerender++ })
     }
   }
 
   render() {
     return (
+
       <Container style={styles.container}>
         <Image
           style={styles.mainImage}
-          source={require('../images/2590-Dark.jpg')}
-          blurRadius={9}
+          source={require('../assets/Main-Background.png')}
         >
-          <Content>
-            {this.state.displayStats &&
-              <Grid>{this.statArray.map(ele => ele)}</Grid>
-            }
-            <Button
-              transparent
-              light
-              onPress={this.resetGameStats}>
-              <Text style={styles.buttonText}>Reset Game Stats</Text>
-            </Button>
-          </Content>
+          {this.state.rerender >= 0 ?
+            <Content>
+              {this.state.displayStats &&
+                <Grid>{this.statArray.map(ele => ele)}</Grid>
+              }
+              <Button
+                transparent
+                light
+                onPress={this.resetGameStats}>
+                <Text style={styles.buttonText}>Reset Game Stats</Text>
+              </Button>
+            </Content>
+            : null}
         </Image>
       </Container>
+
     )
   }
 }

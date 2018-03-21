@@ -54,9 +54,16 @@ class Grid extends Component {
         width: tWidth,
         height: tHeight
       },
+      text3: {
+        color: 'white',
+        fontSize: 65,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginBottom: 20
+      },
       text2: {
         color: 'white',
-        fontSize: 40,
+        fontSize: 30,
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 20
@@ -84,7 +91,8 @@ class Grid extends Component {
               style={styles.backgroundGif}
               source={require('../images/3201.jpg')}
             >
-            <Text style={styles.text2}>Total Moves: {this.props.count.count}</Text>
+            <Text style={styles.text2}>Level Complete{'\n'}</Text>
+            <Text style={styles.text2}>Total Moves: {this.props.count.count}{'\n'}</Text>
             <Text style={styles.text2}>Total Time: {this.props.completedTime}</Text>
             </Image>
         ) : (

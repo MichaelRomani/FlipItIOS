@@ -103,7 +103,7 @@ class HomeScreen extends Component {
         <Animated.View style={{ opacity: fadeAnim }}>
           <Image
             style={styles.image}
-            source={require('./images/2590-Dark.jpg')}
+            source={require('./assets/Main-Background.png')}
           >
             <TouchableOpacity onPress={this.play}>
               <Image

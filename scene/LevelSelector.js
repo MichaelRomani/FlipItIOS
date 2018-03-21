@@ -16,7 +16,7 @@ class Menu extends Component {
       text: {
         fontSize: (tHeight < 900) ? 22 : (tHeight - 250) / 45,
         fontWeight: '900',
-        color: 'black',
+        color: 'white',
         backgroundColor: 'rgba(0,0,0,0)',
         borderWidth: 1,
         paddingLeft: 65,
@@ -63,7 +63,7 @@ class Menu extends Component {
       <View style={styles.container}>
         <Image
           style={styles.image}
-          source={require('../images/2590-Dark.jpg')}
+          source={require('../assets/Main-Background.png')}
         >
           {buttonArr.map(button => button)}
           <Text>{'\n'}</Text>
