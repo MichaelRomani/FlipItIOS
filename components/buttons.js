@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TouchableHighlight, Image, StyleSheet } from 'react-native';
+import { View, TouchableHighlight, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { newArray, setCount, setWinner } from './store/store';
 
@@ -7,52 +7,43 @@ class Buttons extends Component {
   constructor(props) {
     super(props);
     this.toggleColor = this.toggleColor.bind(this);
+    this.setBoard = this.setBoard.bind(this);
   }
 
   toggleColor() {
-    let countNum = this.props.count;
-    console.log(countNum, 'countNum')
+    //change bool to another name
+    const { countNum, dimensions, iNum, bool } = this.props;
     this.props.setCount(countNum + 1);
-    this.width = this.props.dimensions.width;
-    this.height = this.props.dimensions.height;
-    const totalSquares = this.width * this.height;
-    const iNum = this.props.iNum;
-    let tempArr = this.props.bool.slice();
-    tempArr.splice(iNum, 1, !this.props.bool[iNum]);
-    if (iNum - 1 >= 0 && iNum % this.width !== 0) {
-      let oneBeforeNum = iNum - 1;
-      tempArr.splice(oneBeforeNum, 1, !this.props.bool[oneBeforeNum]);
-    }
-    if (iNum + 1 !== this.width && (iNum + 1) % this.width !== 0) {
-      let oneAfterNum = iNum + 1;
-      tempArr.splice(oneAfterNum, 1, !this.props.bool[oneAfterNum]);
+    this.setBoard(dimensions, iNum, bool)
+  }
+
+  setBoard(dimensions, iNum, bool) {
+    const totalSquares = dimensions.width * dimensions.height;
+    let tempArr = bool.slice();
+    tempArr.splice(iNum, 1, !bool[iNum]);
+    if (iNum - 1 >= 0 && iNum % dimensions.width !== 0) tempArr.splice(iNum - 1, 1, !bool[iNum - 1]);
+    if (iNum + 1 !== dimensions.width && (iNum + 1) % dimensions.width !== 0) tempArr.splice(iNum + 1, 1, !bool[iNum + 1]);
+    if (iNum < totalSquares) {
+      if (iNum - dimensions.width >= 0) tempArr.splice(iNum - dimensions.width, 1, !bool[iNum - dimensions.width]);
     }
     if (iNum < totalSquares) {
-      if (iNum - this.width >= 0) {
-        let widthLessNum = iNum - this.width;
-        tempArr.splice(widthLessNum, 1, !this.props.bool[widthLessNum]);
-      }
-    }
-    if (iNum < totalSquares) {
-      let widthPlusNum = iNum + this.width;
-      if (widthPlusNum < totalSquares) {
-        tempArr.splice(widthPlusNum, 1, !this.props.bool[widthPlusNum]);
-      }
+      if (iNum + dimensions.width < totalSquares) tempArr.splice(iNum + dimensions.width, 1, !bool[iNum + dimensions.width]);
     }
     this.props.newArray(tempArr);
   }
 
   render() {
+    const { size } = this.props;
     const displayBool = !!this.props.bool[this.props.iNum];
     const styles = StyleSheet.create({
       imageStyleOff: {
-        width: this.props.size - 3,
-        height: this.props.size - 5,
+        width: size - 3,
+        height: size - 5,
         backgroundColor: 'white'
       },
       imageStyleOn: {
-        width: this.props.size - 3,
-        height: this.props.size - 5,
+        width: size - 3,
+        height: size - 5,
         backgroundColor: 'rgba(0,0,0,0.11)'
       }
     });
