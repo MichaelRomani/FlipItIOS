@@ -4,9 +4,14 @@ import { Button } from 'native-base';
 import store, { setBoard, setDimensions } from '../components/store/store';
 import Dimensions from 'Dimensions';
 const { height, width } = Dimensions.get('window');
-const tHeight = height;
-const tWidth = width;
+
 class Menu extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      buttons: [2, 3, 4, 5, 6, 7]
+    }
+  }
 
   render() {
     let styles = StyleSheet.create({
@@ -14,61 +19,64 @@ class Menu extends Component {
         justifyContent: 'center'
       },
       text: {
-        fontSize: (tHeight < 900) ? 22 : (tHeight - 250) / 45,
+        fontSize: (height < 900) ? 22 : (height - 250) / 45,
         fontWeight: '900',
         color: 'white',
         backgroundColor: 'rgba(0,0,0,0)',
         borderWidth: 1,
         paddingLeft: 65,
         paddingRight: 63,
-        paddingTop: (tHeight < 900) ? 8 : (tHeight - 250) / 70,
-        paddingBottom: (tHeight < 900) ? 8 : (tHeight - 250) / 70,
+        paddingTop: (height < 900) ? 8 : (height - 250) / 70,
+        paddingBottom: (height < 900) ? 8 : (height - 250) / 70,
         borderColor: 'white',
         textAlign: 'center'
       },
       image: {
         justifyContent: 'center',
         alignItems: 'center',
-        width: tWidth,
-        height: tHeight
+        width: width,
+        height: height
       },
       button: {
-        marginTop: (tHeight < 900) ? (tHeight - 205) / 169 : (tHeight - 250) / 26,
-        marginBottom: (tHeight < 900) ? - (tHeight - 205) / 135 : 0,
+        marginTop: (height < 900) ? (height - 205) / 169 : (height - 250) / 26,
+        marginBottom: (height < 900) ? - (height - 205) / 135 : 0,
       }
     });
-    let buttonArr = [];
-    for (let i = 2; i < 8; i++) {
-      buttonArr.push(
-        <View>
-          <Button
-          large
-            transparent
-            light
-            style={styles.button}
-            onPress={() => {
-              store.dispatch(setBoard({ width: i, height: i }));
-              store.dispatch(setDimensions({ width: i, height: i }));
-              this.props.navigation.navigate('GameScreen');
-            }}
-          >
-            <Text style={styles.text}>
-              {i}X{i}
-            </Text>
-          </Button>
-        </View>
-      );
-    }
+
     return (
-      <View style={styles.container}>
-        <Image
-          style={styles.image}
-          source={require('../assets/Main-Background.png')}
-        >
-          {buttonArr.map(button => button)}
-          <Text>{'\n'}</Text>
-        </Image>
-      </View>
+      <Image
+        style={styles.image}
+        source={require('../assets/Main-Background.png')}
+      >
+        {this.state.buttons.map(squares => {
+          return (
+            <View
+              style={styles.container}
+              key={squares}
+            >
+              <Button
+                key={squares}
+                large
+                transparent
+                light
+                style={styles.button}
+                onPress={() => {
+                  store.dispatch(setBoard({ width: squares, height: squares }));
+                  store.dispatch(setDimensions({ width: squares, hesquaresght: squares }));
+                  this.props.navigation.navigate('GameScreen');
+                }}
+              >
+                <Text
+                  style={styles.text}
+                >
+                  {squares}X{squares}
+                </Text>
+              </Button>
+            </View>
+          )
+        })}
+        <Text>{'\n'}</Text>
+      </Image>
     );
   }
 }

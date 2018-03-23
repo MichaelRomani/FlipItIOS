@@ -11,30 +11,29 @@ class Buttons extends Component {
   }
 
   toggleColor() {
-    //change bool to another name
-    const { countNum, dimensions, iNum, bool } = this.props;
-    this.props.setCount(countNum + 1);
-    this.setBoard(dimensions, iNum, bool)
+    const { count, dimensions, sqNum, gridArray } = this.props;
+    this.props.setCount(count + 1);
+    this.setBoard(dimensions, sqNum, gridArray)
   }
 
-  setBoard(dimensions, iNum, bool) {
+  setBoard(dimensions, sqNum, gridArray) {
     const totalSquares = dimensions.width * dimensions.height;
-    let tempArr = bool.slice();
-    tempArr.splice(iNum, 1, !bool[iNum]);
-    if (iNum - 1 >= 0 && iNum % dimensions.width !== 0) tempArr.splice(iNum - 1, 1, !bool[iNum - 1]);
-    if (iNum + 1 !== dimensions.width && (iNum + 1) % dimensions.width !== 0) tempArr.splice(iNum + 1, 1, !bool[iNum + 1]);
-    if (iNum < totalSquares) {
-      if (iNum - dimensions.width >= 0) tempArr.splice(iNum - dimensions.width, 1, !bool[iNum - dimensions.width]);
+    let tempArr = gridArray.slice();
+    tempArr.splice(sqNum, 1, !gridArray[sqNum]);
+    if (sqNum - 1 >= 0 && sqNum % dimensions.width !== 0) tempArr.splice(sqNum - 1, 1, !gridArray[sqNum - 1]);
+    if (sqNum + 1 !== dimensions.width && (sqNum + 1) % dimensions.width !== 0) tempArr.splice(sqNum + 1, 1, !gridArray[sqNum + 1]);
+    if (sqNum < totalSquares) {
+      if (sqNum - dimensions.width >= 0) tempArr.splice(sqNum - dimensions.width, 1, !gridArray[sqNum - dimensions.width]);
     }
-    if (iNum < totalSquares) {
-      if (iNum + dimensions.width < totalSquares) tempArr.splice(iNum + dimensions.width, 1, !bool[iNum + dimensions.width]);
+    if (sqNum < totalSquares) {
+      if (sqNum + dimensions.width < totalSquares) tempArr.splice(sqNum + dimensions.width, 1, !gridArray[sqNum + dimensions.width]);
     }
     this.props.newArray(tempArr);
   }
 
   render() {
     const { size } = this.props;
-    const displayBool = !!this.props.bool[this.props.iNum];
+    const displayBool = !!this.props.gridArray[this.props.sqNum];
     const styles = StyleSheet.create({
       imageStyleOff: {
         width: size - 3,
@@ -67,7 +66,7 @@ class Buttons extends Component {
 
 const mapstate = state => {
   return {
-    bool: state.bool,
+    gridArray: state.gridArray,
     dimensions: state.dimensions,
     count: state.count
   };

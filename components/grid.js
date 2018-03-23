@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { Image, View, StyleSheet, Text, Animated } from 'react-native';
 import { Table, Rows } from 'react-native-table-component';
-import Buttons from './buttons';
+import Squares from './squares';
 import { connect } from 'react-redux';
 import Reset from './reset';
 import Timer from './timer2';
 import { setCount, reset } from './store/store';
 import Dimensions from 'Dimensions';
-let { height, width } = Dimensions.get('window');
-const tHeight = height;
-const tWidth = width;
+const { height, width } = Dimensions.get('window');
 
 class Grid extends Component {
   constructor(props) {
@@ -18,7 +16,6 @@ class Grid extends Component {
       win: false,
       fadeAnim: new Animated.Value(1)
     };
-    this.num = 0;
   }
 
   componentDidMount() {
@@ -30,28 +27,28 @@ class Grid extends Component {
   }
 
   render() {
-    width = this.props.dimensions && this.props.dimensions.width;
-    height = this.props.dimensions && this.props.dimensions.height;
-    const gamePieceSize = tWidth * 0.81 / width;
-    const num = width * height;
+    const { dimensions, gridArray, count, completedTime } = this.props;
+    const boardSquareSize = width * 0.81 / dimensions.width;
+    const gameBoardSquares = dimensions.width * dimensions.height;
+
     let rowButtons = [];
     let tableData = [];
-    for (let i = 0; i < num; i++) {
-      rowButtons.push(<Buttons iNum={i} size={gamePieceSize} />);
-      if ((i + 1) % width === 0) {
+    for (let i = 0; i < gameBoardSquares; i++) {
+      rowButtons.push(<Squares sqNum={i} size={boardSquareSize} />);
+      if ((i + 1) % dimensions.width === 0) {
         tableData.push(rowButtons);
         rowButtons = [];
       }
     }
-    const rowWidth = width * gamePieceSize + width * 2;
+    const rowWidth = dimensions.width * boardSquareSize + dimensions.width * 2;
     const styles = StyleSheet.create({
       text: { marginLeft: 5 },
-      row: { height: gamePieceSize, width: rowWidth },
+      row: { height: boardSquareSize, width: rowWidth },
       backgroundGif: {
         justifyContent: 'center',
         alignItems: 'center',
-        width: tWidth,
-        height: tHeight
+        width: width,
+        height: height
       },
       text3: {
         color: 'white',
@@ -68,21 +65,21 @@ class Grid extends Component {
         marginBottom: 20
       }
     });
-    if (this.props && this.props.bool.indexOf(true) === -1) {
+    if (gridArray.indexOf(true) === -1) {
       setTimeout(() => {
         this.setState({ win: true });
-      }, 1500);
+      }, 1100);
     }
-    if (this.props && this.props.bool.indexOf(true) === -1) {
-      Animated.timing(                  // Animate over time
-        this.state.fadeAnim,            // The animated value to drive
+    if (this.props && gridArray.indexOf(true) === -1) {
+      Animated.timing(
+        this.state.fadeAnim,
         {
-          toValue: 0,                   // Animate to opacity: 1 (opaque)
-          duration: 700,              // Make it take a while
+          toValue: 0,
+          duration: 700,
         }
-      ).start();                        // Starts the animation
+      ).start();
     }
-    let { fadeAnim } = this.state;
+    const { fadeAnim } = this.state;
     return (
       <View>
         {this.state.win ? (
@@ -91,8 +88,8 @@ class Grid extends Component {
             source={require('../images/3201.jpg')}
           >
             <Text style={styles.text2}>Level Complete{'\n'}</Text>
-            <Text style={styles.text2}>Total Moves: {this.props.count}{'\n'}</Text>
-            <Text style={styles.text2}>Total Time: {this.props.completedTime}</Text>
+            <Text style={styles.text2}>Total Moves: {count}{'\n'}</Text>
+            <Text style={styles.text2}>Total Time: {completedTime}</Text>
           </Image>
         ) : (
             <Image
@@ -105,7 +102,7 @@ class Grid extends Component {
                 alignItems: 'center'
               }}>
                 <Text style={styles.text2} key="moveCount">
-                  Moves: {this.props.count}
+                  Moves: {count}
                 </Text>
                 <Table borderStyle={{
                   borderWidth: 0,
@@ -129,10 +126,9 @@ class Grid extends Component {
 
 const mapState = state => {
   return {
-    bool: state.bool,
+    gridArray: state.gridArray,
     dimensions: state.dimensions,
     count: state.count,
-    won: state.won,
     completedTime: state.completedTime
   };
 };
