@@ -62,7 +62,7 @@ class Menu extends Component {
                 style={styles.button}
                 onPress={() => {
                   store.dispatch(setBoard({ width: squares, height: squares }));
-                  store.dispatch(setDimensions({ width: squares, hesquaresght: squares }));
+                  store.dispatch(setDimensions({ width: squares, height: squares }));
                   this.props.navigation.navigate('GameScreen');
                 }}
               >

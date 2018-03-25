@@ -5,6 +5,7 @@ const WIDTH_HEIGHT = 'WIDTH_HEIGHT';
 
 //Action Creators
 export function setDimensions(board) {
+  console.log('object', board, 'object')
   const action = { type: WIDTH_HEIGHT, board };
   return action;
 }
@@ -16,6 +17,7 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
 
     case WIDTH_HEIGHT:
+      console.log('action.board', action.board)
       newState = action.board;
       return newState;
 

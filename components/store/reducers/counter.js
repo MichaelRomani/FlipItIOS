@@ -3,7 +3,6 @@ const COUNTER = 'COUNTER';
 
 //Action Creators
 export function setCount(num) {
-  console.log('num', num)
   const action = { type: COUNTER, num };
   return action;
 }
