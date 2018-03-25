@@ -80,7 +80,6 @@ class Grid extends Component {
       ).start();
     }
     const { fadeAnim } = this.state;
-    console.log('DIM', this.props.dimensions, 'DIM')
     return (
       <View>
         {this.state.win ? (

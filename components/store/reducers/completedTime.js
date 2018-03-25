@@ -1,5 +1,3 @@
-const initialState = 0;
-
 //Actions
 const COMPLETED_TIME = 'COMPLETED_TIME';
 
@@ -10,7 +8,7 @@ export function completionTime(time) {
 }
 
 //Reducer
-export default function reducer(state = initialState, action) {
+export default function reducer(state = 0, action) {
 
   switch (action.type) {
 

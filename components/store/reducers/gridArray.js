@@ -1,14 +1,8 @@
-//Default State
-const width = 5;
-const height = 5;
-const totalSquares = width * height;
-
-let boolArray = [];
-for (let i = 0; i < totalSquares; i++) {
-  boolArray.push(true);
+//Initial State
+const initialState = [];
+for (let i = 0; i < 25; i++) {
+  initialState.push(true);
 }
-
-const initialState = boolArray;
 
 //Actions
 const NEW_ARRAY = 'NEW_ARRAY';
@@ -22,12 +16,11 @@ export function newArray(array) {
 }
 
 export function setBoard(board) {
-  const newBoolArray = [];
+  const newBoard = [];
   const newTotalSquares = board.width * board.height;
   for (let i = 0; i < newTotalSquares; i++) {
-    newBoolArray.push(true);
+    newBoard.push(true);
   }
-  const newBoard = newBoolArray;
   const action = { type: SET_BOARD, newBoard };
   return action;
 }

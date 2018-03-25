@@ -8,14 +8,11 @@
     "version": "1.1.1",
     "orientation": "portrait",
     "primaryColor": "#6b92b9",
-    "icon": "./images/FLIPTILEcopy.png",
-    "loading":{
-      "backgroundImage": "./assets/icon/loading-icon.png"
-    },
-    "ios":{
-      "supportsTablet": true,
-      "buildNumber": "5",
-      "bundleIdentifier": "com.GoodApps.FlipTile"
-    }
+    "icon": "./images/FLIPTILEcopy.png"
+  },
+  "ios": {
+    "supportsTablet": true,
+    "buildNumber": "5",
+    "bundleIdentifier": "com.GoodApps.FlipTile"
   }
 }

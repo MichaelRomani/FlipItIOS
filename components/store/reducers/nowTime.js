@@ -1,5 +1,3 @@
-let initialState = 0;
-
 //Actions
 const NOW_TIME = 'NOW_TIME';
 
@@ -10,7 +8,7 @@ export function setTime(time) {
 }
 
 //Reducer
-export default function reducer(state = initialState, action) {
+export default function reducer(state = 0, action) {
   let newState = state;
 
   switch (action.type) {
