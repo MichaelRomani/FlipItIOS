@@ -71,3 +71,11 @@ export const styleYouWon = (width, height) => {
     }
   });
 }
+
+export const styleReset = {
+  fontSize: 20,
+  fontWeight: 'bold',
+  textAlign: 'center',
+  color: 'white',
+  backgroundColor: 'rgba(0,0,0,0)'
+}

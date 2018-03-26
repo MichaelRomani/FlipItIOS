@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { Button } from 'native-base';
 import { connect } from 'react-redux';
+import { styleReset } from './styleSheet'
 import { reset, setBoard, setCount, setTime } from './store';
 
 const Reset = (props) => {
@@ -12,22 +13,11 @@ const Reset = (props) => {
         transparent
         light
         onPress={() => {
-          props.setTime(Date.now());
-          props.setBoard({
-            width: props.dimensions.width,
-            height: props.dimensions.height
-          });
-          props.setCount(0);
+          props.resetBoard(props, props.dimensions.width, props.dimensions.height)
         }}
       >
         <Text
-          style={{
-            fontSize: 20,
-            fontWeight: 'bold',
-            textAlign: 'center',
-            color: 'white',
-            backgroundColor: 'rgba(0,0,0,0)'
-          }}
+          style={styleReset}
           key="moveCount"
         >
           Reset Board
@@ -49,7 +39,15 @@ const mapDispatch = dispatch => {
     reset: () => dispatch(reset()),
     setBoard: board => dispatch(setBoard(board)),
     setCount: num => dispatch(setCount(num)),
-    setTime: time => dispatch(setTime(time))
+    setTime: time => dispatch(setTime(time)),
+    resetBoard: (props, boardWidth, boardHeight) => {
+      props.setTime(Date.now());
+      props.setBoard({
+        width: boardWidth,
+        height: boardHeight
+      });
+      props.setCount(0);
+    }
   };
 };
 
