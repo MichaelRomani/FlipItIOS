@@ -9,6 +9,7 @@ import YouWon from './youWon'
 import { setCount, reset } from './store';
 import { styleGrid } from './styleSheet'
 import Dimensions from 'Dimensions';
+
 const { height, width } = Dimensions.get('window');
 
 class Grid extends Component {
@@ -88,8 +89,7 @@ class Grid extends Component {
                 </Text>
                 <Table
                   borderStyle={{
-                    borderWidth: 0,
-                    borderColor: 'white'
+                    borderWidth: 0
                   }}
                   style={styles.table}
                 >

@@ -72,6 +72,21 @@ export const styleYouWon = (width, height) => {
   });
 }
 
+export const styleSquares = (size) => {
+  return StyleSheet.create({
+    imageStyleOff: {
+      width: size - 3,
+      height: size - 5,
+      backgroundColor: 'white'
+    },
+    imageStyleOn: {
+      width: size - 3,
+      height: size - 5,
+      backgroundColor: 'rgba(0,0,0,0.11)'
+    }
+  });
+}
+
 export const styleReset = {
   fontSize: 20,
   fontWeight: 'bold',
