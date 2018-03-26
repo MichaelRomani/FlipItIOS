@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
-import { setTime, completionTime } from './store/store';
+import { setTime, completionTime } from './store';
 
 class Timer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      seconds: this.props.nowTime
+      seconds: this.props.currentTime
     };
     this.tick = this.tick.bind(this);
     this.gameTime = 0;
@@ -27,7 +27,7 @@ class Timer extends Component {
   }
 
   tick() {
-    this.setState({ seconds: Date.now() - this.props.nowTime });
+    this.setState({ seconds: Date.now() - this.props.currentTime });
   }
 
   render() {
@@ -64,7 +64,7 @@ class Timer extends Component {
 
 const mapState = state => {
   return {
-    nowTime: state.nowTime,
+    currentTime: state.currentTime,
     completedTime: state.completedTime
   };
 };

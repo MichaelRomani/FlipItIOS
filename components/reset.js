@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { Button } from 'native-base';
 import { connect } from 'react-redux';
-import { reset, setBoard, setCount, setTime } from './store/store';
+import { reset, setBoard, setCount, setTime } from './store';
 
 const Reset = (props) => {
 

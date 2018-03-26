@@ -13,7 +13,7 @@ import {
 import Expo from 'expo'
 import { StackNavigator } from 'react-navigation'
 import { Provider } from 'react-redux'
-import store from './components/store/store'
+import store from './components/store'
 import Menu from './scene/Menu'
 import GameScreen from './scene/GameScreen'
 import LevelSelector from './scene/LevelSelector'

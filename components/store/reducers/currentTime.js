@@ -1,9 +1,9 @@
 //Actions
-const NOW_TIME = 'NOW_TIME';
+const CURRENT_TIME = 'CURRENT_TIME';
 
 //Action Creators
 export function setTime(time) {
-  const action = { type: NOW_TIME, time };
+  const action = { type: CURRENT_TIME, time };
   return action;
 }
 
@@ -13,7 +13,7 @@ export default function reducer(state = 0, action) {
 
   switch (action.type) {
 
-    case NOW_TIME:
+    case CURRENT_TIME:
       newState = action.time;
       return newState;
 

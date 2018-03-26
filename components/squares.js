@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, TouchableHighlight, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
-import { newArray, setCount, setWinner } from './store/store';
+import { newArray, setCount, setWinner } from './store';
 
 class Buttons extends Component {
   constructor(props) {

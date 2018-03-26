@@ -4,11 +4,11 @@ import { Table, Rows } from 'react-native-table-component';
 import Squares from './squares';
 import { connect } from 'react-redux';
 import Reset from './reset';
-import Timer from './timer2';
+import Timer from './timer';
 import YouWon from './youWon'
-import { setCount, reset } from './store/store';
-import Dimensions from 'Dimensions';
+import { setCount, reset } from './store';
 import { styleGrid } from './styleSheet'
+import Dimensions from 'Dimensions';
 const { height, width } = Dimensions.get('window');
 
 class Grid extends Component {

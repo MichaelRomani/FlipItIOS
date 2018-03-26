@@ -53,7 +53,21 @@ export const styleYouWon = (width, height) => {
       fontSize: 30,
       fontWeight: 'bold',
       textAlign: 'center',
-      marginBottom: 20
+      marginBottom: 60
+    },
+    text2: {
+      color: 'white',
+      fontSize: 30,
+      fontWeight: 'bold',
+      textAlign: 'center',
+    },
+    box: {
+      borderWidth: 5,
+      borderColor: 'white',
+      paddingLeft: 20,
+      paddingRight: 20,
+      paddingTop: 70,
+      paddingBottom: 70
     }
   });
 }

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
 import Grid from '../components/grid';
-import store from '../components/store/store';
+import store from '../components/store';
 import { Container, Content } from 'native-base';
 
 const styles = StyleSheet.create({
@@ -26,17 +26,17 @@ const styles = StyleSheet.create({
 });
 
 const GameScreen = () => {
-    return (
-      <Provider store={store}>
-        <Container>
-          <Content>
-            <View>
-              <Grid style={styles.text} />
-            </View>
-          </Content>
-        </Container>
-      </Provider>
-    );
+  return (
+    <Provider store={store}>
+      <Container>
+        <Content>
+          <View>
+            <Grid style={styles.text} />
+          </View>
+        </Content>
+      </Container>
+    </Provider>
+  );
 }
 
 export default GameScreen;

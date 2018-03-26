@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { Button } from 'native-base';
 import { connect } from 'react-redux';
-import { newArray } from './store/store';
+import { newArray } from './store';
 
 class Solution extends Component {
   constructor(props) {

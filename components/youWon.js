@@ -22,21 +22,17 @@ class youWon extends Component {
   componentDidMount() {
     this.seeStats()
   }
-
   seeStats = async () => {
-    console.log('called')
     try {
       const { count, dimensions, completedTime } = this.props;
       const boardSize = dimensions.height.toString();
-      console.log('boardsize', boardSize)
       await AsyncStorage.setItem(boardSize, count.toString())
       await AsyncStorage.setItem(`${boardSize}Time`, completedTime.toString())
       let currentStatMoves = await AsyncStorage.getItem(boardSize)
       let currentStatTime = await AsyncStorage.getItem(`${boardSize}Time`)
-      console.log(currentStatMoves, 'asdfasfsaf')
-      console.log(currentStatTime, 'currentstattime')
-      //compare current vs incoming moves stat, save incoming if better performance than current
-    } catch (error) { }
+    } catch (error) {
+      console.log(error)
+    }
   }
   render() {
     const styles = styleYouWon(tWidth, tHeight)
@@ -47,9 +43,11 @@ class youWon extends Component {
           style={styles.backgroundGif}
           source={require('../images/3201.jpg')}
         >
-          <Text style={styles.text}>Level Complete{'\n'}</Text>
-          <Text style={styles.text}>Total Moves: {count}{'\n'}</Text>
-          <Text style={styles.text}>Total Time: {completedTime}</Text>
+          <View style={styles.box}>
+            <Text style={styles.text}>Level Complete</Text>
+            <Text style={styles.text}>Total Moves: {count}</Text>
+            <Text style={styles.text2}>Total Time: {completedTime}</Text>
+          </View>
         </Image>
       </View>
     )

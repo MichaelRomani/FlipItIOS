@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
 import { Button } from 'native-base';
-import store, { setBoard, setDimensions } from '../components/store/store';
+import store, { setBoard, setDimensions } from '../components/store';
 import Dimensions from 'Dimensions';
 const { height, width } = Dimensions.get('window');
 
