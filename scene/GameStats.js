@@ -80,10 +80,8 @@ export default class GameStats extends Component {
 
   resetGameStats = async () => {
     for (let i = 2; i < 8; i++) {
-      await AsyncStorage.setItem(`${i}${i}`, 'N/A');
-      await AsyncStorage.setItem(`${i}${i + 1}`, 'N/A');
-      await AsyncStorage.setItem(`${i}${i}Time`, 'N/A');
-      await AsyncStorage.setItem(`${i}${i + 1}Time`, 'N/A');
+      await AsyncStorage.setItem(`${i}`, 'N/A');
+      await AsyncStorage.setItem(`${i}Time`, 'N/A');
       this.setState({ rerender: this.state.rerender++ })
     }
   }
