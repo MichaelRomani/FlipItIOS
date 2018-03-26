@@ -52,7 +52,7 @@ class Grid extends Component {
 
 
   render() {
-    const { dimensions, count, completedTime } = this.props;
+    const { dimensions, count } = this.props;
     const boardSquareSize = width * 0.81 / dimensions.width;
     const gameBoardSquares = dimensions.width * dimensions.height;
     const rowWidth = dimensions.width * boardSquareSize + dimensions.width * 2;
