@@ -1,51 +1,32 @@
 import React, { Component } from 'react'
 import {
   View,
-  StyleSheet,
   Text,
-  Animated,
   AsyncStorage,
-  Easing,
   Image
 } from 'react-native'
-import { Table, Row, Rows } from 'react-native-table-component'
-import Buttons from './buttons'
-import { Button } from 'native-base'
 import { connect } from 'react-redux'
-import Reset from './reset'
-import Solution from './solution'
-import Dimensions from 'Dimensions'
-let { height, width } = Dimensions.get('window')
+import { styleYouWon } from './styleSheet'
+import Dimensions from 'Dimensions';
+const { height, width } = Dimensions.get('window');
+
 let tHeight = height
 let tWidth = width
 
 class youWon extends Component {
   constructor(props) {
     super(props)
-    this.spinValue = new Animated.Value(0)
     this.seeStats = this.seeStats.bind(this)
   }
 
   componentDidMount() {
-    this.spin()
-  }
-  spin() {
-    this.spinValue.setValue(0)
-    Animated.timing(this.spinValue, {
-      toValue: 1,
-      duration: 2000,
-      easing: Easing.linear
-    }).start(() => this.spin())
+    this.seeStats()
   }
 
   seeStats = async () => {
     try {
-      //Sets incoming move count to moves variable
-      let moves = this.props.count.count
-      //Sets incoming board dimensions to dimensions variable
-      let dimensions = this.props.dimensions
-      //Sets incoming time to gameTime variable
-      let gameTime = this.props && this.props.completedTime
+      const { moves, dimensions, completedTime } = this.props;
+      console.log('here')
       for (let i = 2; i < 8; i++) {
         //Get current state for Moves
         let currentStatMoves = await AsyncStorage.getItem(`${i}${i}`)
@@ -93,42 +74,20 @@ class youWon extends Component {
           AsyncStorage.setItem(`${i}${i + 1}Time`, gameTime.toString())
         }
       }
-    } catch (error) {}
+    } catch (error) { }
   }
-
   render() {
-    const styles = StyleSheet.create({
-      container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-      }
-    })
-    const spin = this.spinValue.interpolate({
-      inputRange: [0, 1],
-      outputRange: ['0deg', '360deg']
-    })
+    const styles = styleYouWon(tWidth, tHeight)
+    const { count, completedTime } = this.props;
     return (
-      <View style={styles.container}>
+      <View >
         <Image
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: tWidth,
-            height: tHeight
-          }}
-          source={require('../assets/Main-Background.png')}
+          style={styles.backgroundGif}
+          source={require('../images/3201.jpg')}
         >
-          <Animated.Image
-            style={{
-              width: 227,
-              height: 200,
-              margin: 100,
-              transform: [{ rotate: spin }]
-            }}
-            source={require('../assets/Main-Background.png')}
-            onPress={this.seeStats()}
-          />
+          <Text style={styles.text}>Level Complete{'\n'}</Text>
+          <Text style={styles.text}>Total Moves: {count}{'\n'}</Text>
+          <Text style={styles.text}>Total Time: {completedTime}</Text>
         </Image>
       </View>
     )
@@ -137,10 +96,10 @@ class youWon extends Component {
 
 const mapstate = state => {
   return {
-    bool: state.bool,
+    moves: state.moves,
     dimensions: state.dimensions,
+
     count: state.count,
-    won: state.won,
     completedTime: state.completedTime
   }
 }

@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { Image, View, StyleSheet, Text, Animated } from 'react-native';
+import { Image, View, Text, Animated } from 'react-native';
 import { Table, Rows } from 'react-native-table-component';
 import Squares from './squares';
 import { connect } from 'react-redux';
 import Reset from './reset';
 import Timer from './timer2';
+import YouWon from './youWon'
 import { setCount, reset } from './store/store';
 import Dimensions from 'Dimensions';
+import { styleGrid } from './styleSheet'
 const { height, width } = Dimensions.get('window');
 
 class Grid extends Component {
@@ -22,54 +24,17 @@ class Grid extends Component {
     this.props.setCount(0);
   }
 
-  componentWillUnmount() {
-    this.props.reset();
-  }
+  componentDidUpdate() {
+    const { gridArray } = this.props;
 
-  render() {
-    const { dimensions, gridArray, count, completedTime } = this.props;
-    const boardSquareSize = width * 0.81 / dimensions.width;
-    const gameBoardSquares = dimensions.width * dimensions.height;
-
-    let rowButtons = [];
-    let tableData = [];
-    for (let i = 0; i < gameBoardSquares; i++) {
-      rowButtons.push(<Squares sqNum={i} size={boardSquareSize} />);
-      if ((i + 1) % dimensions.width === 0) {
-        tableData.push(rowButtons);
-        rowButtons = [];
-      }
-    }
-    const rowWidth = dimensions.width * boardSquareSize + dimensions.width * 2;
-    const styles = StyleSheet.create({
-      text: { marginLeft: 5 },
-      row: { height: boardSquareSize, width: rowWidth },
-      backgroundGif: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: width,
-        height: height
-      },
-      text3: {
-        color: 'white',
-        fontSize: 65,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        marginBottom: 20
-      },
-      text2: {
-        color: 'white',
-        fontSize: 30,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        marginBottom: 20
-      }
-    });
-    if (gridArray.indexOf(true) === -1) {
+    //Display of game stats triggered by solving puzzle
+    if (gridArray.indexOf(true) === -1 && !this.state.win) {
       setTimeout(() => {
         this.setState({ win: true });
       }, 1100);
     }
+
+    //Fade out animation triggered by solving puzzle
     if (this.props && gridArray.indexOf(true) === -1) {
       Animated.timing(
         this.state.fadeAnim,
@@ -79,18 +44,35 @@ class Grid extends Component {
         }
       ).start();
     }
-    const { fadeAnim } = this.state;
+  }
+
+  componentWillUnmount() {
+    this.props.reset();
+  }
+
+
+  render() {
+    const { dimensions, count, completedTime } = this.props;
+    const boardSquareSize = width * 0.81 / dimensions.width;
+    const gameBoardSquares = dimensions.width * dimensions.height;
+    const rowWidth = dimensions.width * boardSquareSize + dimensions.width * 2;
+    const styles = styleGrid(boardSquareSize, rowWidth, width, height);
+
+    const tableData = [];
+    let rowButtons = [];
+    for (let i = 0; i < gameBoardSquares; i++) {
+      rowButtons.push(<Squares sqNum={i} size={boardSquareSize} />);
+      if ((i + 1) % dimensions.width === 0) {
+        tableData.push(rowButtons);
+        rowButtons = [];
+      }
+    }
+
+    const { fadeAnim, win } = this.state;
     return (
       <View>
-        {this.state.win ? (
-          <Image
-            style={styles.backgroundGif}
-            source={require('../images/3201.jpg')}
-          >
-            <Text style={styles.text2}>Level Complete{'\n'}</Text>
-            <Text style={styles.text2}>Total Moves: {count}{'\n'}</Text>
-            <Text style={styles.text2}>Total Time: {completedTime}</Text>
-          </Image>
+        {win ? (
+          <YouWon />
         ) : (
             <Image
               style={styles.backgroundGif}
@@ -104,16 +86,18 @@ class Grid extends Component {
                 <Text style={styles.text2} key="moveCount">
                   Moves: {count}
                 </Text>
-                <Table borderStyle={{
-                  borderWidth: 0,
-                  borderColor: 'white'
-                }}>
+                <Table
+                  borderStyle={{
+                    borderWidth: 0,
+                    borderColor: 'white'
+                  }}
+                  style={styles.table}
+                >
                   <Rows
                     data={tableData}
                     style={styles.row}
                   />
                 </Table>
-                <Text style={{ fontSize: 5 }}>{'\n'}</Text>
                 <Timer />
                 <Reset />
               </Animated.View>
