@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { newArray, setCount, setWinner } from './store';
 import { styleSquares } from './styleSheet'
 
-const Buttons = props => {
+const Squares = props => {
 
   const displayBool = !!props.gridArray[props.sqNum];
   const { size } = props;
@@ -41,20 +41,17 @@ const mapDispatch = dispatch => {
       props.setBoard(props, dimensions, sqNum, gridArray)
     },
     setBoard: (props, dimensions, sqNum, gridArray) => {
-      const totalSquares = dimensions.width * dimensions.height;
+      const { width, height } = dimensions;
+      const totalSquares = width * height;
       let tempArr = gridArray.slice();
-      tempArr.splice(sqNum, 1, !gridArray[sqNum]);
-      if (sqNum - 1 >= 0 && sqNum % dimensions.width !== 0) tempArr.splice(sqNum - 1, 1, !gridArray[sqNum - 1]);
-      if (sqNum + 1 !== dimensions.width && (sqNum + 1) % dimensions.width !== 0) tempArr.splice(sqNum + 1, 1, !gridArray[sqNum + 1]);
-      if (sqNum < totalSquares) {
-        if (sqNum - dimensions.width >= 0) tempArr.splice(sqNum - dimensions.width, 1, !gridArray[sqNum - dimensions.width]);
-      }
-      if (sqNum < totalSquares) {
-        if (sqNum + dimensions.width < totalSquares) tempArr.splice(sqNum + dimensions.width, 1, !gridArray[sqNum + dimensions.width]);
-      }
+      tempArr[sqNum] = !gridArray[sqNum];
+      if (sqNum - 1 >= 0 && sqNum % width !== 0) tempArr[sqNum - 1] = !gridArray[sqNum - 1];
+      if (sqNum + 1 !== width && (sqNum + 1) % width !== 0) tempArr[sqNum + 1] = !gridArray[sqNum + 1];
+      if (sqNum < totalSquares && sqNum - width >= 0) tempArr[sqNum - width] = !gridArray[sqNum - width];
+      if (sqNum < totalSquares && sqNum + width < totalSquares) tempArr[sqNum + width] = !gridArray[sqNum + width];
       props.newArray(tempArr);
     }
   };
 };
 
-export default connect(mapstate, mapDispatch)(Buttons);
+export default connect(mapstate, mapDispatch)(Squares);

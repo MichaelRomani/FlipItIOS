@@ -26,11 +26,7 @@ class Timer extends Component {
     clearInterval(this.timer);
   }
 
-  tick() {
-    this.setState({ seconds: Date.now() - this.props.currentTime });
-  }
-
-  render() {
+  componentDidUpdate() {
     let elapsed = Math.round(this.state.seconds / 100);
     let seconds = (elapsed / 10).toFixed(1);
     const dispSeconds =
@@ -42,6 +38,14 @@ class Timer extends Component {
         ? Math.floor(seconds / 60)
         : '0'.concat(Math.floor(seconds / 60));
     this.gameTime = dispMinutes + ':' + dispSeconds;
+  }
+
+  tick() {
+    this.setState({ seconds: Date.now() - this.props.currentTime });
+  }
+
+  render() {
+
     return (
       <View>
         <Text

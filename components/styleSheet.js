@@ -6,6 +6,24 @@ export const styleGrid = (boardSquareSize, rowWidth, width, height) => {
     text: {
       marginLeft: 5
     },
+    text2: {
+      color: 'white',
+      fontSize: 30,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      marginBottom: 20
+    },
+    text3: {
+      color: 'white',
+      fontSize: 65,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      marginBottom: 20
+    },
+    text4: {
+      fontSize: 5,
+      marginBottom: 10
+    },
     row: {
       height: boardSquareSize,
       width: rowWidth
@@ -16,27 +34,9 @@ export const styleGrid = (boardSquareSize, rowWidth, width, height) => {
       width: width,
       height: height
     },
-    text3: {
-      color: 'white',
-      fontSize: 65,
-      fontWeight: 'bold',
-      textAlign: 'center',
-      marginBottom: 20
-    },
-    text2: {
-      color: 'white',
-      fontSize: 30,
-      fontWeight: 'bold',
-      textAlign: 'center',
-      marginBottom: 20
-    },
-    text4: {
-      fontSize: 5,
-      marginBottom: 10
-    },
     table: {
       marginBottom: 20
-    },
+    }
   });
 }
 
@@ -53,15 +53,26 @@ export const styleYouWon = (width, height) => {
       fontSize: 30,
       fontWeight: 'bold',
       textAlign: 'center',
-      marginBottom: 60
+      marginBottom: 60,
+      opacity: 1
     },
     text2: {
       color: 'white',
       fontSize: 30,
       fontWeight: 'bold',
       textAlign: 'center',
+      opacity: 1
     },
-    box: {
+    box1: {
+      borderWidth: 20,
+      borderColor: 'white',
+      paddingLeft: 10,
+      paddingRight: 10,
+      paddingTop: 10,
+      paddingBottom: 10,
+      opacity: 0.75
+    },
+    box2: {
       borderWidth: 5,
       borderColor: 'white',
       paddingLeft: 20,

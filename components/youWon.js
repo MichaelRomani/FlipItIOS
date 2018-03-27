@@ -22,6 +22,7 @@ class youWon extends Component {
   componentDidMount() {
     this.seeStats()
   }
+
   seeStats = async () => {
     try {
       const { count, dimensions, completedTime } = this.props;
@@ -43,10 +44,12 @@ class youWon extends Component {
           style={styles.backgroundGif}
           source={require('../images/3201.jpg')}
         >
-          <View style={styles.box}>
-            <Text style={styles.text}>Level Complete</Text>
-            <Text style={styles.text}>Total Moves: {count}</Text>
-            <Text style={styles.text2}>Total Time: {completedTime}</Text>
+          <View style={styles.box1}>
+            <View style={styles.box2}>
+              <Text style={styles.text}>Level Complete</Text>
+              <Text style={styles.text}>Total Moves: {count}</Text>
+              <Text style={styles.text2}>Total Time: {completedTime}</Text>
+            </View>
           </View>
         </Image>
       </View>
@@ -58,7 +61,6 @@ const mapstate = state => {
   return {
     moves: state.moves,
     dimensions: state.dimensions,
-
     count: state.count,
     completedTime: state.completedTime
   }
