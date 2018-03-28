@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
+import { styleTimer } from './styleSheet'
 import { setTime, completionTime } from './store';
 
 class Timer extends Component {
@@ -45,20 +46,9 @@ class Timer extends Component {
   }
 
   render() {
-
     return (
       <View>
-        <Text
-          style={{
-            fontSize: 40,
-            backgroundColor: 'rgba(0,0,0,0)',
-            color: 'white',
-            borderWidth: 3,
-            paddingLeft: 10,
-            paddingRight: 10,
-            borderColor: 'white'
-          }}
-        >
+        <Text style={styleTimer} >
           {this.gameTime}
         </Text>
       </View>

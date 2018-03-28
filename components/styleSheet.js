@@ -105,3 +105,13 @@ export const styleReset = {
   color: 'white',
   backgroundColor: 'rgba(0,0,0,0)'
 }
+
+export const styleTimer = {
+  fontSize: 40,
+  backgroundColor: 'rgba(0,0,0,0)',
+  color: 'white',
+  borderWidth: 3,
+  paddingLeft: 10,
+  paddingRight: 10,
+  borderColor: 'white'
+}
