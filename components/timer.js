@@ -30,15 +30,15 @@ class Timer extends Component {
   componentDidUpdate() {
     let elapsed = Math.round(this.state.seconds / 100);
     let seconds = (elapsed / 10).toFixed(1);
-    const dispSeconds =
+    const displaySeconds =
       Math.floor(seconds % 60) < 10
         ? '0'.concat(Math.floor(seconds) % 60)
         : Math.floor(seconds) % 60;
-    const dispMinutes =
+    const displayMinutes =
       Math.floor(seconds / 60).length > 1
         ? Math.floor(seconds / 60)
         : '0'.concat(Math.floor(seconds / 60));
-    this.gameTime = dispMinutes + ':' + dispSeconds;
+    this.gameTime = displayMinutes + ':' + displaySeconds;
   }
 
   tick() {

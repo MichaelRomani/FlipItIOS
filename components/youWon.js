@@ -10,9 +10,6 @@ import { styleYouWon } from './styleSheet'
 import Dimensions from 'Dimensions';
 const { height, width } = Dimensions.get('window');
 
-let tHeight = height
-let tWidth = width
-
 class youWon extends Component {
   constructor(props) {
     super(props)
@@ -36,7 +33,7 @@ class youWon extends Component {
     }
   }
   render() {
-    const styles = styleYouWon(tWidth, tHeight)
+    const styles = styleYouWon(width, height)
     const { count, completedTime } = this.props;
     return (
       <View >

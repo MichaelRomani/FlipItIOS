@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { Button } from 'native-base';
 import store, { setBoard, setDimensions } from '../components/store';
 import Dimensions from 'Dimensions';
+import { styleLevelSelector } from './styleSheetScene'
 const { height, width } = Dimensions.get('window');
 
 class Menu extends Component {
@@ -14,34 +15,7 @@ class Menu extends Component {
   }
 
   render() {
-    let styles = StyleSheet.create({
-      container: {
-        justifyContent: 'center'
-      },
-      text: {
-        fontSize: (height < 900) ? 22 : (height - 250) / 45,
-        fontWeight: '900',
-        color: 'white',
-        backgroundColor: 'rgba(0,0,0,0)',
-        borderWidth: 1,
-        paddingLeft: 65,
-        paddingRight: 63,
-        paddingTop: (height < 900) ? 8 : (height - 250) / 70,
-        paddingBottom: (height < 900) ? 8 : (height - 250) / 70,
-        borderColor: 'white',
-        textAlign: 'center'
-      },
-      image: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: width,
-        height: height
-      },
-      button: {
-        marginTop: (height < 900) ? (height - 205) / 169 : (height - 250) / 26,
-        marginBottom: (height < 900) ? - (height - 205) / 135 : 0,
-      }
-    });
+    let styles = styleLevelSelector(height, width)
 
     return (
       <Image
