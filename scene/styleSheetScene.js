@@ -36,3 +36,31 @@ export const styleLevelSelector = (height, width) => {
     }
   });
 }
+
+export const styleMenu = (height, width) => {
+  return StyleSheet.create({
+    image: {
+      flex: 1,
+      position: 'absolute',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: width,
+      height: height
+    },
+    text: {
+      color: 'white',
+      fontSize: (height < 900) ? 23 : (height - 250) / 45,
+      fontWeight: '900',
+      backgroundColor: 'rgba(0,0,0,0)',
+      borderWidth: 1,
+      paddingLeft: 25,
+      paddingRight: 23,
+      paddingTop: 8,
+      borderColor: 'white',
+      width: 200,
+      height: 40,
+      textAlign: 'center'
+    }
+  });
+}
