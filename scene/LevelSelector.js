@@ -49,7 +49,6 @@ class Menu extends Component {
             </View>
           )
         })}
-        <Text>{'\n'}</Text>
       </Image>
     );
   }
