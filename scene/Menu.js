@@ -2,9 +2,8 @@ import React from 'react';
 import { View, Image, Text } from 'react-native';
 import { Button } from 'native-base';
 import { styleMenu } from './styleSheetScene'
-
 const Dimensions = require('Dimensions');
-let { height, width } = Dimensions.get('window');
+const { height, width } = Dimensions.get('window');
 
 export const GameMenu = (props) => {
   const styles = styleMenu(height, width)

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Image, Text, View, StyleSheet } from 'react-native';
 import Dimensions from 'Dimensions';
 const { height, width } = Dimensions.get('window');
@@ -34,24 +34,24 @@ const styles = StyleSheet.create({
 });
 const About = () => {
 
-    return (
-         <Image
-         style={styles.image}
-          source={require('../assets/Main-Background.png')}
-        >
-        <View style={styles.container}>
-              <Text style={styles.title}>
-              About Us
+  return (
+    <Image
+      style={styles.image}
+      source={require('../assets/Main-Background.png')}
+    >
+      <View style={styles.container}>
+        <Text style={styles.title}>
+          About Us
               </Text>
-              <View >
-              <Text style={styles.text}>
-              {'\n'}
-              This game was created by Andrew Ziegler and Mike Romani
+        <View >
+          <Text style={styles.text}>
+            {'\n'}
+            This game was created by Andrew Ziegler and Mike Romani
           </Text>
-              </View>
-              </View>
-        </Image>
-    );
+        </View>
+      </View>
+    </Image>
+  );
 }
 
 export default About;
