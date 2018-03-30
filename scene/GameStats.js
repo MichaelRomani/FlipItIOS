@@ -11,9 +11,9 @@ import {
 import { View, StyleSheet, Image, AsyncStorage } from 'react-native'
 import { Col, Row, Grid } from 'react-native-easy-grid'
 import Dimensions from 'Dimensions'
+import { styleGameStats } from './styleSheetScene'
+
 const { height, width } = Dimensions.get('window')
-const tHeight = height
-const tWidth = width
 
 export default class GameStats extends Component {
   constructor(props) {
@@ -22,15 +22,16 @@ export default class GameStats extends Component {
       rerender: 0,
       displayStats: false
     }
+    const styles = styleGameStats(height, width)
     this.resetGameStats = this.resetGameStats.bind(this);
     this.limitPush = 0
     this.statArray = [
-      <Row key={'array'} style={styles.row}>
+      <Row key={'array1'} style={styles.row}>
         <Col style={styles.colStyle}>
           <Text style={styles.text1}>G a m e - S t a t s</Text>
         </Col>
       </Row>,
-      <Row key={'array'} style={styles.mainRows}>
+      <Row key={'array2'} style={styles.mainRows}>
         <Col style={styles.colStyle}>
           <Text style={styles.textCenter}>Board</Text>
         </Col>
@@ -44,7 +45,8 @@ export default class GameStats extends Component {
     ]
   }
 
-  componentWillMount = async () => {
+  componentDidMount = async () => {
+    const styles = styleGameStats(height, width)
     try {
       for (let i = 2; i < 8; i++) {
         let moveStat = await AsyncStorage.getItem(`${i}${i}`)
@@ -87,6 +89,7 @@ export default class GameStats extends Component {
   }
 
   render() {
+    const styles = styleGameStats(height, width)
     return (
 
       <Container style={styles.container}>
@@ -109,57 +112,6 @@ export default class GameStats extends Component {
             : null}
         </Image>
       </Container>
-
     )
   }
 }
-
-let styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center'
-  },
-  row: {
-    marginTop: 80,
-    backgroundColor: 'rgba(0,0,0,0)',
-    borderWidth: 2,
-    height: 50,
-    marginLeft: 35,
-    marginRight: 35
-  },
-  text1: {
-    marginTop: 5,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 28,
-    color: 'white'
-  },
-  mainRows: {
-    marginTop: 8,
-    backgroundColor: 'rgba(0,0,0,0)',
-    borderWidth: 2,
-    borderColor: 'white',
-    height: 30,
-    marginLeft: 35,
-    marginRight: 35
-  },
-  colStyle: { borderWidth: 1, borderColor: 'white', },
-  textCenter: { textAlign: 'center', color: 'white' },
-  mainImage: {
-    width: tWidth,
-    height: tHeight
-  },
-  buttonText: {
-    fontSize: 24,
-    fontWeight: '900',
-    color: 'white',
-    backgroundColor: 'rgba(0,0,0,0)',
-    paddingLeft: 25,
-    paddingRight: 23,
-    paddingTop: (tHeight < 800) ? (tHeight - 200) / 26 : (tHeight - 50) / 26,
-    paddingBottom: (tHeight < 800) ? (tHeight - 150) / 26 : (tHeight - 50) / 26,
-    borderColor: 'black',
-    width: (tHeight < 800) ? (tHeight - 200) / 2 : (tHeight) / 4,
-    textAlign: 'center'
-  }
-})

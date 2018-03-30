@@ -64,3 +64,55 @@ export const styleMenu = (height, width) => {
     }
   });
 }
+
+export const styleGameStats = (height, width) => {
+  return StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center'
+    },
+    row: {
+      marginTop: 80,
+      backgroundColor: 'rgba(0,0,0,0)',
+      borderWidth: 2,
+      height: 50,
+      marginLeft: 35,
+      marginRight: 35
+    },
+    text1: {
+      marginTop: 5,
+      textAlign: 'center',
+      fontWeight: 'bold',
+      fontSize: 28,
+      color: 'white'
+    },
+    mainRows: {
+      marginTop: 8,
+      backgroundColor: 'rgba(0,0,0,0)',
+      borderWidth: 2,
+      borderColor: 'white',
+      height: 30,
+      marginLeft: 35,
+      marginRight: 35
+    },
+    colStyle: { borderWidth: 1, borderColor: 'white', },
+    textCenter: { textAlign: 'center', color: 'white' },
+    mainImage: {
+      width: width,
+      height: height
+    },
+    buttonText: {
+      fontSize: 24,
+      fontWeight: '900',
+      color: 'white',
+      backgroundColor: 'rgba(0,0,0,0)',
+      paddingLeft: 25,
+      paddingRight: 23,
+      paddingTop: (height < 800) ? (height - 200) / 26 : (height - 50) / 26,
+      paddingBottom: (height < 800) ? (height - 150) / 26 : (height - 50) / 26,
+      borderColor: 'black',
+      width: (height < 800) ? (height - 200) / 2 : (height) / 4,
+      textAlign: 'center'
+    }
+  })
+}
