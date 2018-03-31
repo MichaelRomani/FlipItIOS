@@ -32,7 +32,7 @@ export const styleGrid = (boardSquareSize, rowWidth, width, height) => {
       justifyContent: 'center',
       alignItems: 'center',
       width: width,
-      height: height
+      height: height * 0.92
     },
     table: {
       marginBottom: 20
@@ -46,7 +46,7 @@ export const styleYouWon = (width, height) => {
       justifyContent: 'center',
       alignItems: 'center',
       width: width,
-      height: height * .92
+      height: height * 0.92
     },
     text: {
       color: 'white',

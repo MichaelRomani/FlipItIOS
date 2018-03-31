@@ -26,7 +26,6 @@ class youWon extends Component {
       const boardSize = dimensions.height.toString();
       const currentStatMoves = await AsyncStorage.getItem(boardSize)
       const currentStatTime = await AsyncStorage.getItem(`${boardSize}Time`)
-      console.log(currentStatMoves === 'N/A')
       if (+currentStatMoves > count || currentStatMoves === 'N/A') await AsyncStorage.setItem(boardSize, count.toString())
       if (currentStatTime < completedTime || currentStatTime === 'N/A') await AsyncStorage.setItem(`${boardSize}Time`, completedTime.toString())
     } catch (error) {
