@@ -49,10 +49,8 @@ export default class GameStats extends Component {
     const styles = styleGameStats(height, width)
     try {
       for (let i = 2; i < 8; i++) {
-        let moveStat = await AsyncStorage.getItem(`${i}${i}`)
-        let move_2Stat = await AsyncStorage.getItem(`${i}${i + 1}`)
-        let timeStat = await AsyncStorage.getItem(`${i}${i}Time`)
-        let time_2Stat = await AsyncStorage.getItem(`${i}${i + 1}Time`)
+        let moveStat = await AsyncStorage.getItem(`${i}`)
+        let timeStat = await AsyncStorage.getItem(`${i}Time`)
         if (this.limitPush < 1) {
           this.statArray.push(
             <View key={i}>

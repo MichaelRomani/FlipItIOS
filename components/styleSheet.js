@@ -46,7 +46,7 @@ export const styleYouWon = (width, height) => {
       justifyContent: 'center',
       alignItems: 'center',
       width: width,
-      height: height
+      height: height * .92
     },
     text: {
       color: 'white',
