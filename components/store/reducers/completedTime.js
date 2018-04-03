@@ -8,7 +8,7 @@ export function completionTime(time) {
 }
 
 //Reducer
-export default function reducer(state = 0, action) {
+export default function reducer(state = '0', action) {
 
   switch (action.type) {
 

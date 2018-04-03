@@ -8,6 +8,7 @@ import Timer from './timer';
 import YouWon from './youWon'
 import { setCount, reset } from './store';
 import { styleGrid } from './styleSheet'
+import { PropTypes } from 'prop-types'
 import Dimensions from 'Dimensions';
 
 const { height, width } = Dimensions.get('window');
@@ -19,6 +20,13 @@ class Grid extends Component {
       win: false,
       fadeAnim: new Animated.Value(1)
     };
+  }
+
+  static propTypes = {
+    gridArray: PropTypes.array,
+    dimensions: PropTypes.object,
+    count: PropTypes.number,
+    completedTime: PropTypes.string
   }
 
   componentDidMount() {
