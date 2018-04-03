@@ -13,6 +13,7 @@ import { Col, Row, Grid } from 'react-native-easy-grid'
 import Dimensions from 'Dimensions'
 import { styleGameStats } from './styleSheetScene'
 
+
 const { height, width } = Dimensions.get('window')
 
 export default class GameStats extends Component {
@@ -20,29 +21,30 @@ export default class GameStats extends Component {
     super(props)
     this.state = {
       rerender: 0,
-      displayStats: false
+      displayStats: false,
+      statArray: [
+        <Row key={'array1'} style={styles.row}>
+          <Col style={styles.colStyle}>
+            <Text style={styles.text1}>G a m e - S t a t s</Text>
+          </Col>
+        </Row>,
+        <Row key={'array2'} style={styles.mainRows}>
+          <Col style={styles.colStyle}>
+            <Text style={styles.textCenter}>Board</Text>
+          </Col>
+          <Col style={styles.colStyle}>
+            <Text style={styles.textCenter}># Moves</Text>
+          </Col>
+          <Col style={styles.colStyle}>
+            <Text style={styles.textCenter}>Time</Text>
+          </Col>
+        </Row>
+      ]
     }
     const styles = styleGameStats(height, width)
     this.resetGameStats = this.resetGameStats.bind(this);
     this.limitPush = 0
-    this.statArray = [
-      <Row key={'array1'} style={styles.row}>
-        <Col style={styles.colStyle}>
-          <Text style={styles.text1}>G a m e - S t a t s</Text>
-        </Col>
-      </Row>,
-      <Row key={'array2'} style={styles.mainRows}>
-        <Col style={styles.colStyle}>
-          <Text style={styles.textCenter}>Board</Text>
-        </Col>
-        <Col style={styles.colStyle}>
-          <Text style={styles.textCenter}># Moves</Text>
-        </Col>
-        <Col style={styles.colStyle}>
-          <Text style={styles.textCenter}>Time</Text>
-        </Col>
-      </Row>
-    ]
+
   }
 
   componentDidMount = async () => {
@@ -52,27 +54,30 @@ export default class GameStats extends Component {
         let moveStat = await AsyncStorage.getItem(`${i}`)
         let timeStat = await AsyncStorage.getItem(`${i}Time`)
         if (this.limitPush < 1) {
-          this.statArray.push(
-            <View key={i}>
-              <Row style={styles.mainRows}>
-                <Col style={styles.colStyle}>
-                  <Text style={styles.textCenter}>
-                    {i}X{i}
-                  </Text>
-                </Col>
-                <Col style={styles.colStyle}>
-                  <Text style={styles.textCenter}>{moveStat || 'N/A'}</Text>
-                </Col>
-                <Col style={styles.colStyle}>
-                  <Text style={styles.textCenter}>{timeStat || 'N/A'}</Text>
-                </Col>
-              </Row>
-            </View>
-          )
+          this.setState({
+            statArray: statArray.concat(
+              [<View key={i}>
+                <Row style={styles.mainRows}>
+                  <Col style={styles.colStyle}>
+                    <Text style={styles.textCenter}>
+                      {i}X{i}
+                    </Text>
+                  </Col>
+                  <Col style={styles.colStyle}>
+                    <Text style={styles.textCenter}>{moveStat || 'N/A'}</Text>
+                  </Col>
+                  <Col style={styles.colStyle}>
+                    <Text style={styles.textCenter}>{timeStat || 'N/A'}</Text>
+                  </Col>
+                </Row>
+              </View>]
+            )
+          })
         }
+
+        this.limitPush++
+        this.setState({ displayStats: !this.state.displayStats })
       }
-      this.limitPush++
-      this.setState({ displayStats: !this.state.displayStats })
     } catch (error) {
       alert(error)
     }
@@ -98,7 +103,7 @@ export default class GameStats extends Component {
           {this.state.rerender >= 0 ?
             <Content>
               {this.state.displayStats &&
-                <Grid>{this.statArray.map(ele => ele)}</Grid>
+                <Grid>{this.state.statArray.map(ele => ele)}</Grid>
               }
               <Button
                 transparent
@@ -113,3 +118,4 @@ export default class GameStats extends Component {
     )
   }
 }
+

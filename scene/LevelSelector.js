@@ -10,7 +10,7 @@ class Menu extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      buttons: [2, 3, 4, 5, 6, 7]
+      levels: [2, 3, 4, 5, 6, 7]
     }
   }
 
@@ -22,7 +22,7 @@ class Menu extends Component {
         style={styles.image}
         source={require('../assets/Main-Background.png')}
       >
-        {this.state.buttons.map(squares => {
+        {this.state.levels.map(squares => {
           return (
             <View
               style={styles.container}

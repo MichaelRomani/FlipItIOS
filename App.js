@@ -1,16 +1,9 @@
 import React, { Component } from 'react'
 import {
   Animated,
-  AppRegistry,
   TouchableOpacity,
-  Text,
-  View,
-  ImageBackground,
-  StyleSheet,
-  TouchableHighlight,
   Image
 } from 'react-native'
-import Expo from 'expo'
 import { StackNavigator } from 'react-navigation'
 import { Provider } from 'react-redux'
 import store from './components/store'
@@ -20,54 +13,10 @@ import LevelSelector from './scene/LevelSelector'
 import How2Play from './scene/How2Play'
 import About from './scene/About'
 import GameStats from './scene/GameStats'
+import { styleApp } from './styleSheet'
 const Dimensions = require('Dimensions')
-let { height, width } = Dimensions.get('window')
-let tHeight = height
-let tWidth = width
-console.disableYellowBox = true
+const { height, width } = Dimensions.get('window')
 
-
-let styles = StyleSheet.create({
-  container: {
-    paddingLeft: 120,
-    paddingRight: 120
-  },
-  button: {
-    paddingBottom: 10,
-    paddingTop: 10,
-    backgroundColor: '#6b92b9'
-  },
-  background: {
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
-    flex: 1
-  },
-  image: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: tWidth,
-    height: tHeight
-  },
-  flipLogo: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 160
-  },
-  text: {
-    textAlign: 'center',
-    color: 'white',
-    fontSize: 37
-  },
-  title: {
-    backgroundColor: '#6b92b9',
-    textAlign: 'center',
-    position: 'relative',
-    bottom: '16%',
-    color: 'white',
-    fontSize: 45
-  }
-})
 class HomeScreen extends Component {
   constructor(props) {
     super(props)
@@ -76,10 +25,6 @@ class HomeScreen extends Component {
       fadeAnim: new Animated.Value(0),  // Initial value for opacity: 0,
     }
     this.play = this.play.bind(this)
-  }
-
-  static navigationOptions = {
-    title: 'Home'
   }
 
   componentDidMount() {
@@ -97,6 +42,7 @@ class HomeScreen extends Component {
   }
 
   render() {
+    const styles = styleApp(height, width);
     let { fadeAnim } = this.state;
     return (
       <Provider store={store}>
@@ -142,5 +88,5 @@ const ModalStack = StackNavigator({
   }
 })
 
-
 export default ModalStack
+
