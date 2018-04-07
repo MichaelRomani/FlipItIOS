@@ -4,6 +4,7 @@ import { Button } from 'native-base';
 import { connect } from 'react-redux';
 import { styleReset } from './styleSheet'
 import { reset, setBoard, setCount, setTime } from './store';
+import { PropTypes } from 'prop-types'
 
 const Reset = (props) => {
 
@@ -25,6 +26,11 @@ const Reset = (props) => {
       </Button>
     </View>
   );
+}
+
+Reset.propTypes = {
+  dimensions: PropTypes.object,
+  count: PropTypes.number
 }
 
 const mapState = state => {
