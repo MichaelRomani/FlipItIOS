@@ -30,6 +30,11 @@ const Reset = (props) => {
 
 Reset.propTypes = {
   dimensions: PropTypes.object,
+  reset: PropTypes.func,
+  setBoard: PropTypes.func,
+  setCount: PropTypes.func,
+  setTime: PropTypes.func,
+  resetBoard: PropTypes.func
 }
 
 const mapState = state => {

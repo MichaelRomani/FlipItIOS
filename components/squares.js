@@ -26,7 +26,7 @@ const mapstate = state => {
   return {
     gridArray: state.gridArray,
     dimensions: state.dimensions,
-    count: state.count
+    count: state.count,
   };
 };
 

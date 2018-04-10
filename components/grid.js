@@ -26,7 +26,9 @@ class Grid extends Component {
     gridArray: PropTypes.array,
     dimensions: PropTypes.object,
     count: PropTypes.number,
-    completedTime: PropTypes.string
+    completedTime: PropTypes.string,
+    setcount: PropTypes.func,
+    reset: PropTypes.func
   }
 
   componentDidMount() {
