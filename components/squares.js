@@ -3,6 +3,7 @@ import { View, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
 import { newArray, setCount, setWinner } from './store';
 import { styleSquares } from './styleSheet'
+import { PropTypes } from 'prop-types'
 
 const Squares = props => {
 
@@ -19,6 +20,17 @@ const Squares = props => {
       </TouchableHighlight>
     </View>
   );
+}
+
+Squares.PropTypes = {
+  gridArray: PropTypes.array,
+  dimensions: PropTypes.object,
+  count: PropTypes.string,
+  newArray: PropTypes.number,
+  setcount: PropTypes.func,
+  setWinner: PropTypes.func,
+  toggleColor: PropTypes.func,
+  setBoard: PropTypes.func,
 
 }
 
