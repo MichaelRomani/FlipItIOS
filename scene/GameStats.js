@@ -16,8 +16,8 @@ import { styleGameStats } from './styleSheetScene'
 const { height, width } = Dimensions.get('window')
 
 export default class GameStats extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       rerender: 0,
       displayStats: false

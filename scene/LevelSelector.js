@@ -4,6 +4,7 @@ import { Button } from 'native-base';
 import store, { setBoard, setDimensions } from '../components/store';
 import Dimensions from 'Dimensions';
 import { styleLevelSelector } from './styleSheetScene'
+import { PropTypes } from 'prop-types'
 const { height, width } = Dimensions.get('window');
 
 class Menu extends Component {
@@ -12,6 +13,10 @@ class Menu extends Component {
     this.state = {
       levels: [2, 3, 4, 5, 6, 7]
     }
+  }
+
+  static PropTypes = {
+    navigation: PropTypes.object
   }
 
   render() {

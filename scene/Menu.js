@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Image, Text } from 'react-native';
 import { Button } from 'native-base';
 import { styleMenu } from './styleSheetScene'
+import { PropTypes } from 'prop-types'
 const Dimensions = require('Dimensions');
 const { height, width } = Dimensions.get('window');
 
@@ -67,5 +68,8 @@ export const GameMenu = (props) => {
   );
 }
 
+GameMenu.PropTypes = {
+  navigation: PropTypes.object
+}
 
 export default GameMenu;

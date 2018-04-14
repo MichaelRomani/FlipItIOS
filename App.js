@@ -14,6 +14,8 @@ import How2Play from './scene/How2Play'
 import About from './scene/About'
 import GameStats from './scene/GameStats'
 import { styleApp } from './styleSheet'
+import { PropTypes } from 'prop-types'
+
 const Dimensions = require('Dimensions')
 const { height, width } = Dimensions.get('window')
 
@@ -25,6 +27,10 @@ class HomeScreen extends Component {
       fadeAnim: new Animated.Value(0),  // Initial value for opacity: 0,
     }
     this.play = this.play.bind(this)
+  }
+
+  static PropTypes = {
+    navigation: PropTypes.object
   }
 
   componentDidMount() {
@@ -89,4 +95,3 @@ const ModalStack = StackNavigator({
 })
 
 export default ModalStack
-
