@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
 import { styleTimer } from './styleSheet'
 import { setTime, completionTime } from './store';
+import { PropTypes } from 'prop-types'
 
 class Timer extends Component {
   constructor(props) {
@@ -12,6 +13,13 @@ class Timer extends Component {
       gameTime: 0
     };
     this.tick = this.tick.bind(this);
+  }
+
+  static PropTypes = {
+    currentTime: PropTypes.string,
+    completedTime: PropTypes.string,
+    setTime: PropTypes.func,
+    completedTime: PropTypes.func
   }
 
   componentWillMount() {

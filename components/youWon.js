@@ -8,12 +8,20 @@ import {
 import { connect } from 'react-redux'
 import { styleYouWon } from './styleSheet'
 import Dimensions from 'Dimensions';
+import { PropTypes } from 'prop-types'
 const { height, width } = Dimensions.get('window');
 
 class youWon extends Component {
   constructor(props) {
     super(props)
     this.seeStats = this.seeStats.bind(this)
+  }
+
+  static PropTypes = {
+    moves: PropTypes.string,
+    dimensions: PropTypes.string,
+    count: PropTypes.string,
+    completedTime: PropTypes.string
   }
 
   componentDidMount() {

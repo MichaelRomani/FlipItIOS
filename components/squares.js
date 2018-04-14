@@ -31,7 +31,6 @@ Squares.PropTypes = {
   setWinner: PropTypes.func,
   toggleColor: PropTypes.func,
   setBoard: PropTypes.func,
-
 }
 
 const mapstate = state => {
