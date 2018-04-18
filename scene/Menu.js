@@ -51,14 +51,6 @@ export const GameMenu = (props) => {
             large
             transparent
             light
-            onPress={() => props.navigation.navigate('About')}
-          >
-            <Text style={styles.text}>About</Text>
-          </Button>
-          <Button
-            large
-            transparent
-            light
             onPress={() => props.navigation.navigate('Test')}
             title="AsyncStorage Test"
           />
