@@ -11,7 +11,6 @@ import Menu from './scene/Menu'
 import GameScreen from './scene/GameScreen'
 import LevelSelector from './scene/LevelSelector'
 import How2Play from './scene/How2Play'
-import About from './scene/About'
 import GameStats from './scene/GameStats'
 import { styleApp } from './styleSheet'
 import { PropTypes } from 'prop-types'
@@ -89,9 +88,6 @@ const ModalStack = StackNavigator({
   GameStats: {
     screen: GameStats
   },
-  About: {
-    screen: About
-  }
 })
 
 export default ModalStack
