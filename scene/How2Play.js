@@ -35,31 +35,22 @@ const styles = StyleSheet.create({
 class Instructions extends Component {
   render() {
     return (
-         <Image
-         style={styles.image}
-          source={require('../assets/Main-Background.png')}
-        >
+      <Image
+        style={styles.image}
+        source={require('../assets/Main-Background.png')}
+      >
         <View style={styles.container}>
-              <Text style={styles.title}>
-                How to Play Flip Title
+          <Text style={styles.title}>
+            How to Play Flip Title
               </Text>
-              <View >
-              <Text style={styles.text}>
+          <View >
+            <Text style={styles.text}>
               {'\n'}
-              Object of the game is to make it so that each tile of the game board is green.
-              The tiles of the board can either be red or green.
-              Each time you click on a tile it will flip the tile to the opposite color. In addition
-              to flipping the tile to a new color it will also flip the neighboring tiles (excluding diagonally adjacent tiles).
-              {'\n'}{'\n'}
-              The number of moves and how long you take is being tracked, so do your best! Global
-              ranking is to come, so start practicing.
-              {'\n'}{'\n'}
-              By the way: the tile images will change as holidays and the seasons change, so check out the new themes when they happen.
-              {'\n'}
-          </Text>
-              </View>
-              </View>
-        </Image>
+              {/* '.........' */}
+            </Text>
+          </View>
+        </View>
+      </Image>
     );
   }
 }
