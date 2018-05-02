@@ -23,7 +23,7 @@ class HomeScreen extends Component {
     super(props)
     this.state = {
       color: 0,
-      fadeAnim: new Animated.Value(0),  // Initial value for opacity: 0,
+      fadeAnim: new Animated.Value(0),
     }
     this.play = this.play.bind(this)
   }
@@ -33,13 +33,13 @@ class HomeScreen extends Component {
   }
 
   componentDidMount() {
-    Animated.timing(                  // Animate over time
-      this.state.fadeAnim,            // The animated value to drive
+    Animated.timing(
+      this.state.fadeAnim,
       {
-        toValue: 1,                   // Animate to opacity: 1 (opaque)
-        duration: 1500,              // Make it take a while
+        toValue: 1,
+        duration: 1500,
       }
-    ).start();                        // Starts the animation
+    ).start();
   }
 
   play() {
