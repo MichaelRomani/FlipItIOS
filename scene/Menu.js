@@ -35,14 +35,6 @@ export const GameMenu = (props) => {
             large
             transparent
             light
-            onPress={() => props.navigation.navigate('How2Play')}
-          >
-            <Text style={styles.text}>How to Play</Text>
-          </Button>
-          <Button
-            large
-            transparent
-            light
             onPress={() => props.navigation.navigate('GameStats')}
           >
             <Text style={styles.text}>Game Stats</Text>
